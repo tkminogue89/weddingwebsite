@@ -152,6 +152,18 @@ a { color: var(--clay); }
   border-radius: 100px;
 }
 .nav__cta:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--cream) !important; }
+
+/* ---- Tabbed navigation: one panel at a time ---- */
+body.tabbed [hidden] { display: none !important; }
+body.tabbed .section__next,
+body.tabbed .hero__scroll { display: none; }
+.nav__links a.is-current { color: var(--clay); }
+.nav__links a.nav__cta.is-current { color: var(--cream) !important; }
+.is-active { animation: tabfade 0.4s ease both; }
+@keyframes tabfade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
 .nav__toggle {
   display: none;
   background: none;

@@ -22,6 +22,7 @@
     <a class="nav__mark" href="#top">T&nbsp;&amp;&nbsp;N</a>
     <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
     <ul class="nav__links" id="nav-links">
+      <li><a href="#top">Home</a></li>
       <li><a href="#story">Story</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#attire">Attire</a></li>
@@ -826,6 +827,44 @@
 
       banner.hidden = false;
       requestAnimationFrame(() => banner.classList.add('is-shown'));
+    })();
+
+    /* ======================================================================
+       TABS  —  show one section at a time, switched by the nav.
+       Progressive enhancement: with JS off it's a normal long scroll.
+       Hash-routed, so #travel deep-links and the back button both work.
+       ====================================================================== */
+    (function tabs() {
+      const ids = ['top', 'story', 'details', 'attire', 'schedule', 'travel', 'rsvp', 'faq'];
+      const panels = ids.map(id => document.getElementById(id)).filter(Boolean);
+      if (panels.length < 2) return;
+
+      const navAnchors = Array.from(document.querySelectorAll('.nav a[href^="#"]'));
+      document.body.classList.add('tabbed');
+      // base state visible (the fade observer can't fire while a panel is hidden)
+      document.querySelectorAll('.section').forEach(s => s.classList.add('in'));
+
+      function activate(id) {
+        if (!ids.includes(id)) id = 'top';
+        panels.forEach(p => {
+          const on = p.id === id;
+          p.hidden = !on;
+          if (!on) p.classList.remove('is-active');
+        });
+        navAnchors.forEach(a =>
+          a.classList.toggle('is-current', a.getAttribute('href') === '#' + id));
+        const active = document.getElementById(id);
+        if (active) {                 // replay the entrance animation each switch
+          active.classList.remove('is-active');
+          void active.offsetWidth;
+          active.classList.add('is-active');
+        }
+        window.scrollTo(0, 0);
+      }
+
+      const currentId = () => (location.hash || '#top').replace('#', '');
+      window.addEventListener('hashchange', () => activate(currentId()));
+      activate(currentId());
     })();
   </script>
 </body>
