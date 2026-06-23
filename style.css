@@ -60,21 +60,17 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
-  /* firmly snap each section to the top as you scroll. (Sections taller than
-     the screen still scroll freely — the browser relaxes the snap for them.) */
-  scroll-snap-type: y mandatory;
+  scroll-padding-top: 5rem;   /* nav-link jumps land below the sticky nav */
 }
 .hero, .section, .footer {
-  scroll-snap-align: start;
-  scroll-margin-top: 5rem;   /* land just below the sticky nav */
+  scroll-margin-top: 5rem;
 }
 
-/* down-arrow guides between sections (added by script), anchored at the bottom */
+/* down-arrow guides between sections (added by script) */
 .section__next {
-  position: absolute;
-  bottom: clamp(1rem, 3vw, 1.8rem);
-  left: 50%;
+  display: block;
+  width: fit-content;
+  margin: clamp(1.5rem, 4vw, 2.5rem) auto 0;
   font-size: 1.5rem;
   line-height: 1;
   color: var(--clay);
@@ -83,8 +79,8 @@ html {
 }
 .section__next:hover { color: var(--dusk); }
 @keyframes arrow-bob {
-  0%, 100% { transform: translate(-50%, 0); }
-  50%      { transform: translate(-50%, 6px); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
 }
 
 body {
@@ -300,16 +296,9 @@ a { color: var(--clay); }
 
 /* ============================ SECTIONS ============================ */
 .section {
-  position: relative;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.25rem, 5vw, 2.5rem);
-  /* each section fills the screen below the nav and centers its content,
-     so it snaps with the important part framed in the middle */
-  min-height: calc(100svh - 5rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: clamp(4rem, 9vw, 7rem) clamp(1.25rem, 5vw, 2.5rem);
   text-align: center;
   opacity: 0;
   transform: translateY(24px);
@@ -631,15 +620,29 @@ a { color: var(--clay); }
   padding-right: 0;
 }
 .rsvp {
-  background: var(--dusk);
-  color: var(--cream);
-  max-width: 620px;
+  /* light, open container that frames the embedded RSVPify form */
+  max-width: 680px;
   margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
-  border-radius: 220px 220px 18px 18px;   /* a big arch */
   text-align: center;
 }
-.rsvp__lead { margin: 0 0 2rem; color: color-mix(in srgb, var(--cream) 85%, transparent); }
+.rsvp__lead { margin: 0 0 2rem; color: color-mix(in srgb, var(--ink) 75%, transparent); }
+
+/* ---- Embedded RSVPify form ---- */
+.rsvp-embed {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--cream);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px -24px rgba(58, 40, 32, 0.45);
+  min-height: 220px;   /* frame shows while RSVPify loads */
+}
+/* RSVPify injects its own auto-resizing iframe */
+.rsvp-embed iframe {
+  display: block;
+  width: 100% !important;
+  border: 0 !important;
+}
 .rsvp__btn {
   background: var(--ochre);
   color: var(--dusk);
@@ -870,11 +873,11 @@ input:focus-visible, textarea:focus-visible {
   color: color-mix(in srgb, var(--cream) 65%, transparent);
 }
 
-/* same widget, inside the RSVP card */
+/* same widget, below the embedded form (now on a light background) */
 .rsvp-textme {
-  margin-top: 2rem;
-  padding-top: 1.6rem;
-  border-top: 1px solid color-mix(in srgb, var(--cream) 16%, transparent);
+  margin-top: 2.4rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -883,8 +886,14 @@ input:focus-visible, textarea:focus-visible {
 }
 .rsvp-textme__label {
   font-size: 0.92rem;
-  color: color-mix(in srgb, var(--cream) 80%, transparent);
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
 }
+.rsvp-textme .textme__input {
+  background: var(--cream);
+  border: 1.5px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  color: var(--ink);
+}
+.rsvp-textme .textme__input:focus { border-color: var(--clay); }
 .textme__form {
   display: flex;
   gap: 0.4rem;
@@ -977,6 +986,5 @@ input:focus-visible, textarea:focus-visible {
 /* ============================ REDUCED MOTION ============================ */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto; }
-  html { scroll-snap-type: none; }
   .section { opacity: 1; transform: none; transition: none; }
 }
