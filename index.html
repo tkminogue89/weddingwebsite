@@ -242,7 +242,7 @@
         <article class="card">
           <span class="card__label">After Party</span>
           <h3 class="card__heading">10 PM</h3>
-          <p class="card__venue">Mas o Menos</p>
+          <p class="card__venue">Más o Menos</p>
           <p class="card__addr">Until midnight · keep the party going</p>
           <p class="card__note">Bring your wallet (drinks are on you!) — but don't worry about driving: transportation to and from will be provided.</p>
           <details class="card-cal">
@@ -315,14 +315,30 @@
       <div class="cards cards--two">
         <article class="card">
           <span class="card__label">Where to stay</span>
-          <!-- EDIT: add your room block or recommended stays -->
-          <p class="card__note">Joshua Tree has everything from desert casitas to boutique inns. We're putting together a list of favorites nearby — check back here for our recommendations.</p>
+          <p class="card__venue">Fairfield Inn &amp; Suites by Marriott</p>
+          <p class="card__addr">Twentynine Palms · about 15 min from Sacred Sands</p>
+          <p class="card__note">We've reserved a block of rooms at our group rate. Book early — the block is limited and rooms fill up.</p>
+          <a class="btn card__btn" href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1775602002797&amp;key=GRP&amp;app=resvlink" target="_blank" rel="noopener">Book the room block →</a>
         </article>
         <article class="card">
           <span class="card__label">Getting around</span>
-          <!-- EDIT: travel + parking notes -->
-          <p class="card__note">Fly into Palm Springs (PSP), about an hour away, or Ontario (ONT). A car is the easiest way to get around the desert. Parking is available on-site at Sacred Sands.</p>
+          <p class="card__note">Fly into Palm Springs (PSP), about an hour away, or Ontario (ONT). A car is the easiest way to get around the desert, and parking is available on-site at Sacred Sands.</p>
         </article>
+      </div>
+
+      <!-- Key spots for the weekend (each opens in Google Maps).
+           TO ADD A PINNED MAP: create a Google My Map with these 3 pins, then
+           paste its <iframe> embed code right above this list. -->
+      <div class="map">
+        <p class="map__intro">It's all a short desert drive apart — tap any spot to open it in Maps:</p>
+        <ul class="map__places">
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Sacred+Sands+63155+Quail+Springs+Rd+Joshua+Tree+CA" target="_blank" rel="noopener">
+            <strong>Sacred Sands</strong><span>Ceremony &amp; reception · 63155 Quail Springs Rd, Joshua Tree</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Fairfield+Inn+Suites+6333+Encelia+Ave+Twentynine+Palms+CA" target="_blank" rel="noopener">
+            <strong>Fairfield Inn &amp; Suites</strong><span>Hotel block · 6333 Encelia Ave, Twentynine Palms</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Mas+o+Menos+66031+Twentynine+Palms+Hwy+Joshua+Tree+CA" target="_blank" rel="noopener">
+            <strong>Más o Menos</strong><span>After party · 66031 Twentynine Palms Hwy, Joshua Tree</span></a></li>
+        </ul>
       </div>
     </section>
 
@@ -671,7 +687,7 @@
       },
       afterparty: {
         title: "Teri & Nathan — After Party",
-        location: 'Mas o Menos, Joshua Tree, CA',
+        location: 'Más o Menos, Joshua Tree, CA',
         details: 'Keep the night going until midnight! Bring your wallet — transportation to and from will be provided.',
         start: '20270502T050000Z',   // 5/1 10:00 PM PDT
         end:   '20270502T070000Z',   // 5/2 12:00 AM PDT (midnight)
