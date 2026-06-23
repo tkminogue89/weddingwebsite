@@ -229,14 +229,25 @@
 
         <article class="card">
           <span class="card__label">Reception</span>
-          <h3 class="card__heading">5:30 PM</h3>
-          <!-- EDIT: confirm time -->
+          <h3 class="card__heading">5:30 – 10 PM</h3>
           <p class="card__venue">Sacred Sands</p>
           <p class="card__addr">Same location · dinner, dancing &amp; cake</p>
-          <p class="card__note">Cocktails at sunset, dinner under the stars, and dancing into the desert night.</p>
+          <p class="card__note">Cocktails at sunset, dinner under the stars, and dancing into the desert night — wrapping up at 10 PM.</p>
           <details class="card-cal">
             <summary class="card-cal__summary">Add to calendar</summary>
             <div class="card-cal__opts" data-cal="reception"></div>
+          </details>
+        </article>
+
+        <article class="card">
+          <span class="card__label">After Party</span>
+          <h3 class="card__heading">10 PM</h3>
+          <p class="card__venue">Mas o Menos</p>
+          <p class="card__addr">Until midnight · keep the party going</p>
+          <p class="card__note">Bring your wallet (drinks are on you!) — but don't worry about driving: transportation to and from will be provided.</p>
+          <details class="card-cal">
+            <summary class="card-cal__summary">Add to calendar</summary>
+            <div class="card-cal__opts" data-cal="afterparty"></div>
           </details>
         </article>
 
@@ -657,6 +668,13 @@
         details: 'Dinner, dancing & cake at Sacred Sands. Dress code: desert formal.',
         start: '20270502T003000Z',   // 5/1 5:30 PM PDT
         end:   '20270502T050000Z',   // 5/1 10:00 PM PDT
+      },
+      afterparty: {
+        title: "Teri & Nathan — After Party",
+        location: 'Mas o Menos, Joshua Tree, CA',
+        details: 'Keep the night going until midnight! Bring your wallet — transportation to and from will be provided.',
+        start: '20270502T050000Z',   // 5/1 10:00 PM PDT
+        end:   '20270502T070000Z',   // 5/2 12:00 AM PDT (midnight)
       },
     };
 
