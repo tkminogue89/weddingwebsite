@@ -145,11 +145,13 @@ a { color: var(--clay); }
 }
 .nav__links a:hover { color: var(--clay); }
 .nav__cta {
+  background: var(--clay);
+  color: var(--cream) !important;
   border: 1.5px solid var(--clay);
-  padding: 0.35rem 0.95rem;
+  padding: 0.35rem 1.15rem;
   border-radius: 100px;
 }
-.nav__cta:hover { background: var(--clay); color: var(--cream) !important; }
+.nav__cta:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--cream) !important; }
 .nav__toggle {
   display: none;
   background: none;
@@ -624,6 +626,21 @@ a { color: var(--clay); }
   color: var(--clay);
 }
 .timeline__what { font-size: 1.05rem; }
+.timeline__day {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink) 52%, transparent);
+  padding: 1.5rem 0 0.5rem;
+}
+.timeline__day:first-child { padding-top: 0; }
+
+/* One-line intro under a section title (clarifies the section's job) */
+.section__lead {
+  max-width: 540px;
+  margin: -0.3rem auto 2.2rem;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
 
 /* ---- RSVP (deep dusk ground) ---- */
 .section--rsvp {
