@@ -164,6 +164,80 @@ body.tabbed .hero__scroll { display: none; }
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: none; }
 }
+
+/* ---- Passcode gate (client-side privacy screen) ---- */
+html:not(.unlocked):has(#gate) { overflow: hidden; }
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--sand);
+  text-align: center;
+}
+html.unlocked .gate { display: none; }
+.gate.is-unlocked { opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0.5s ease; }
+.gate__card { max-width: 430px; width: 100%; }
+.gate__eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin: 0 0 1rem;
+}
+.gate__title {
+  font-family: var(--display);
+  font-weight: normal;
+  font-size: clamp(2rem, 7vw, 3rem);
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0 0 1.1rem;
+}
+.gate__lead {
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  margin: 0 0 1.8rem;
+}
+.gate__form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+.gate__input {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 0.8rem 1.1rem;
+  border: 1.5px solid color-mix(in srgb, var(--ink) 25%, transparent);
+  border-radius: 100px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  text-align: center;
+}
+.gate__input:focus {
+  outline: none;
+  border-color: var(--clay);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--clay) 25%, transparent);
+}
+.gate__btn {
+  padding: 0.8rem 1.7rem;
+  border: none;
+  border-radius: 100px;
+  background: var(--clay);
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+.gate__btn:hover { background: var(--oxblood); }
+.gate__error { color: var(--oxblood); margin: 1.1rem 0 0; font-size: 0.95rem; }
+.gate.shake { animation: gate-shake 0.4s; }
+@keyframes gate-shake {
+  0%, 100% { transform: none; }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
 .nav__toggle {
   display: none;
   background: none;

@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Returning guests who already entered the passcode skip the gate (no flash) -->
+  <script>try{if(localStorage.getItem('tn-unlocked')==='1')document.documentElement.classList.add('unlocked');}catch(e){}</script>
 
   <!-- ============================================================
        EDIT: Page title shown in the browser tab
@@ -15,6 +19,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- ============================ PASSCODE GATE ============================
+       Client-side privacy screen. NOTE: this is privacy, not real security —
+       the page files are still publicly downloadable. Fine for a wedding.
+       To change the code: in the gate() script, set PASS to btoa('newcode'). -->
+  <div id="gate" class="gate" role="dialog" aria-modal="true" aria-label="Passcode required">
+    <div class="gate__card">
+      <p class="gate__eyebrow">Teri &amp; Nathan</p>
+      <h1 class="gate__title">See you in the desert</h1>
+      <p class="gate__lead">This little corner of the web is just for our people. Enter the passcode from your invitation to come on in.</p>
+      <form class="gate__form" id="gate-form">
+        <input class="gate__input" id="gate-input" type="password" inputmode="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Passcode" aria-label="Passcode">
+        <button class="gate__btn" type="submit">Enter</button>
+      </form>
+      <p class="gate__error" id="gate-error" hidden>That's not quite it — check your invitation and try again.</p>
+    </div>
+  </div>
 
   <!-- ============================ NAV ============================ -->
   <nav class="nav" aria-label="Primary">
@@ -419,6 +440,45 @@
   </div>
 
   <script>
+    /* ======================================================================
+       PASSCODE GATE  —  client-side privacy screen.
+       NOT real security: the page files are still publicly downloadable.
+       To change the code, replace PASS with btoa('yournewcode')
+       (the gate lowercases + trims what the guest types).
+       ====================================================================== */
+    (function gate() {
+      const gateEl = document.getElementById('gate');
+      if (!gateEl) return;
+      const PASS  = 'am9zaHVhdHJlZQ==';            // base64 of "joshuatree"
+      const form  = document.getElementById('gate-form');
+      const input = document.getElementById('gate-input');
+      const error = document.getElementById('gate-error');
+
+      // already entered on this device? go straight in.
+      let unlocked = false;
+      try { unlocked = localStorage.getItem('tn-unlocked') === '1'; } catch (e) {}
+      if (unlocked) { document.documentElement.classList.add('unlocked'); gateEl.remove(); return; }
+
+      function enter() {
+        try { localStorage.setItem('tn-unlocked', '1'); } catch (e) {}
+        document.documentElement.classList.add('unlocked');
+        gateEl.classList.add('is-unlocked');
+        setTimeout(() => gateEl.remove(), 500);
+      }
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const val = (input.value || '').trim().toLowerCase();
+        let ok = false;
+        try { ok = btoa(val) === PASS; } catch (e) { ok = false; }
+        if (ok) { enter(); return; }
+        error.hidden = false;
+        gateEl.classList.remove('shake'); void gateEl.offsetWidth; gateEl.classList.add('shake');
+        input.select();
+      });
+      input.focus();
+    })();
+
     // Mobile nav toggle
     const toggle = document.querySelector('.nav__toggle');
     const links = document.querySelector('.nav__links');
