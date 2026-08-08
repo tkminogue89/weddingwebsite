@@ -50,7 +50,7 @@
   --oxblood: #7c2d24; /* letterpress ink — the save-the-date red */
 
   --display: 'Bone Quixote', 'Cooper Black', serif;   /* headers + bold display */
-  --body: 'Bariol', system-ui, -apple-system, sans-serif;  /* body + subheaders */
+  --body: 'futura-pt', 'Bariol', system-ui, -apple-system, sans-serif;  /* body + subheaders (Futura PT via Adobe Fonts, Bariol fallback) */
 
   --maxw: 1040px;
   --r: 0;             /* rounding lives in the arches, not the boxes */
