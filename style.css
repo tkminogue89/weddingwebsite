@@ -49,7 +49,7 @@
   --dusk:  #4a2d33;   /* deep plum — the RSVP & footer ground */
   --oxblood: #7c2d24; /* letterpress ink — the save-the-date red */
 
-  --display: 'Bone Quixote', 'Cooper Black', serif;   /* headers + bold display */
+  --display: 'futura-pt-bold', 'Bone Quixote', serif;   /* headers = Futura PT Bold (Bone Quixote fallback) */
   --body: 'futura-pt', 'Bariol', system-ui, -apple-system, sans-serif;  /* body + subheaders (Futura PT via Adobe Fonts, Bariol fallback) */
 
   --maxw: 1040px;
@@ -59,6 +59,7 @@
 * { box-sizing: border-box; }
 
 html {
+  font-size: 112.5%;          /* base 16px -> 18px; scales all rem sizing up ~12.5% */
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;   /* nav-link jumps land below the sticky nav */
 }
