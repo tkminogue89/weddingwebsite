@@ -39,15 +39,17 @@
    so it never tips into one-note warmth.
    ============================================================ */
 :root {
-  --sand:  #f4ead6;   /* page background */
-  --cream: #fbf6ec;   /* cards / lifted surfaces */
-  --ink:   #3a2820;   /* primary text (warm espresso) */
-  --clay:  #c45d3a;   /* burnt terracotta — key accent */
-  --ochre: #e0a23c;   /* golden ochre */
-  --rose:  #d98c7a;   /* dusty rose */
-  --olive: #5d6b47;   /* muted olive — cool balance */
-  --dusk:  #4a2d33;   /* deep plum — the RSVP & footer ground */
-  --oxblood: #7c2d24; /* letterpress ink — the save-the-date red */
+  /* Wes Anderson desert palette */
+  --sand:  #f2e7cf;   /* page background — flat pale sand */
+  --cream: #fbf7ec;   /* cards / lifted surfaces */
+  --ink:   #2e2823;   /* primary text (warm near-black) */
+  --clay:  #e54e21;   /* burnt orange — key accent (buttons, links) */
+  --ochre: #ceb175;   /* muted sand/gold — borders & secondary */
+  --rose:  #c0401c;   /* deep burnt red — errors */
+  --olive: #6c8645;   /* dusty olive — tertiary accent */
+  --teal:  #0a9f9d;   /* desert turquoise — the cool pop */
+  --dusk:  #114b48;   /* deep teal — the RSVP & footer ground */
+  --oxblood: #c0401c; /* deep burnt orange — save-the-date ink */
 
   --display: 'futura-pt-bold', 'Bone Quixote', serif;   /* headers = Futura PT Bold (Bone Quixote fallback) */
   --body: 'futura-pt', 'Bariol', system-ui, -apple-system, sans-serif;  /* body + subheaders (Futura PT via Adobe Fonts, Bariol fallback) */
@@ -104,7 +106,7 @@ a { color: var(--clay); }
   letter-spacing: 0.28em;
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--clay);
+  color: var(--teal);
   margin: 0 0 0.9rem;
 }
 .eyebrow--light { color: var(--ochre); }
@@ -280,6 +282,7 @@ html.unlocked .gate { display: none; }
   letter-spacing: 0.34em;
   font-size: 0.8rem;
   font-weight: 700;
+  color: var(--teal);
   margin: 0.5rem 0 0;
   /* nudge for the letter-spacing so it stays optically centered */
   padding-left: 0.34em;
@@ -329,7 +332,7 @@ html.unlocked .gate { display: none; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.34em;
-  color: var(--oxblood);
+  color: var(--teal);
   font-size: 0.8rem;
   margin: 1.2rem 0 0;
   /* nudge for the letter-spacing so it stays optically centered */
