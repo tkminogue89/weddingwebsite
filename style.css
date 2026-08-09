@@ -192,8 +192,8 @@ body::after {
 /* ---- Scrolling marquee ticker ---- */
 .ticker {
   overflow: hidden;
-  background: var(--oxblood);
-  border-bottom: 1px solid color-mix(in srgb, #000 18%, transparent);
+  background: var(--olive);
+  border-block: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
 }
 .ticker__track {
   display: inline-flex;
@@ -203,7 +203,7 @@ body::after {
 }
 .ticker__track span {
   padding: 0.5rem 0;
-  color: var(--cream);
+  color: var(--ink);
   font-family: var(--body);
   font-weight: 700;
   text-transform: uppercase;
@@ -383,6 +383,7 @@ html.unlocked .gate { display: none; }
   display: block;
   width: 100%;
   height: auto;
+  filter: url(#ink-grain);   /* grainy, screen-printed ink texture */
 }
 
 /* "See you in the desert?" — same treatment as the "are getting married" eyebrow */

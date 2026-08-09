@@ -23,6 +23,14 @@
 </head>
 <body>
 
+  <!-- SVG filter: roughens the illustration's ink lines for a grainy, screen-printed look -->
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <filter id="ink-grain" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+
   <!-- ============================ PASSCODE GATE ============================
        Client-side privacy screen. NOTE: this is privacy, not real security —
        the page files are still publicly downloadable. Fine for a wedding.
