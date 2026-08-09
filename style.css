@@ -697,6 +697,7 @@ html.unlocked .gate { display: none; }
 /* Embedded Pinterest board */
 .pinboard {
   align-self: center;
+  width: fit-content;   /* shrink-wrap to the fixed-width widget so it centers */
   max-width: 100%;
   margin: 0.4rem auto 0;
   padding: 0.6rem;
