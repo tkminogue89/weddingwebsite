@@ -324,7 +324,7 @@ html.unlocked .gate { display: none; }
   width: min(78%, 430px, 44vh);
   /* the SVG is inlined below and inherits this color via currentColor,
      so it prints in ink and works even when opened straight from disk */
-  color: var(--ochre);
+  color: var(--ink);
   line-height: 0;
 }
 .std__illustration-svg {
