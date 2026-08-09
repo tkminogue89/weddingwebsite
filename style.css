@@ -386,6 +386,38 @@ html.unlocked .gate { display: none; }
   filter: url(#ink-grain);   /* grainy, screen-printed ink texture */
 }
 
+/* ---- Front-page framed photo (replaces the illustration) ---- */
+.std__scene { display: none; }
+.std__photo {
+  margin: 0.6rem auto 0.2rem;
+  width: min(80%, 460px);
+  aspect-ratio: 3 / 2;
+  position: relative;
+  overflow: hidden;
+  border: 7px solid var(--cream);
+  outline: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.5);
+}
+.std__photo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Wes Anderson grade: desaturate, warm, lift/fade */
+  filter: saturate(0.6) contrast(0.9) brightness(1.07) sepia(0.3) hue-rotate(-8deg);
+}
+/* teal-amber split-tone wash over the photo */
+.std__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--teal) 36%, transparent),
+    color-mix(in srgb, var(--clay) 28%, transparent));
+  mix-blend-mode: soft-light;
+}
+
 /* "See you in the desert?" — same treatment as the "are getting married" eyebrow */
 .std__cta-line {
   font-family: var(--body);
