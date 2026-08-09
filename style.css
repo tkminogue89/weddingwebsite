@@ -39,21 +39,19 @@
    so it never tips into one-note warmth.
    ============================================================ */
 :root {
-  /* "Bottle Rocket" palette — deep olive ground, golden display, rust/camel/navy accents */
-  --sand:  #3f4a24;   /* deep olive — page ground */
-  --cream: #586a38;   /* lifted olive — cards / raised surfaces */
-  --ink:   #efe8d4;   /* warm cream — primary text */
-  --clay:  #bd5232;   /* burnt rust — key accent (buttons, links) */
-  --ochre: #cba06b;   /* camel / tan — secondary + line art */
-  --rose:  #bd5232;   /* rust — errors */
-  --olive: #93a45a;   /* light olive — accents on the dark ground */
-  --teal:  #cba06b;   /* (repurposed) camel — hero sublines */
-  --dusk:  #2b2a48;   /* deep indigo — RSVP & footer ground */
-  --sage:  #45512a;   /* alternate section ground (slightly lifted olive) */
-  --oxblood: #a5432a; /* deeper rust — save-the-date ink */
-  --yellow: #ecd24e;  /* golden yellow — the big display pop */
+  /* "Moonrise" palette — sun-faded cream, warm oranges + dusty blues/sage */
+  --sand:  #f1ead6;   /* warm cream — page ground */
+  --cream: #fbf6e9;   /* near-white cream — cards + light text on fills */
+  --ink:   #3a2a1d;   /* dark warm brown — primary text */
+  --clay:  #c8681c;   /* burnt orange — key accent (buttons, links) */
+  --ochre: #d3ab63;   /* muted gold — borders & secondary */
+  --rose:  #b23a1a;   /* rust — errors */
+  --olive: #93a288;   /* muted sage — tertiary accent */
+  --teal:  #56808a;   /* dusty teal — cool text accents */
+  --dusk:  #5f7a89;   /* dusty slate blue — nav band + footer ground */
+  --oxblood: #a5361a; /* deep rust — display headings + illustration */
 
-  --display: 'futura-pt-bold', 'Bone Quixote', serif;   /* big headings = Futura PT Bold */
+  --display: 'futura-pt-bold', 'Bone Quixote', serif;   /* headers = Futura PT Bold (Bone Quixote fallback) */
   --body: 'futura-pt', 'Bariol', system-ui, -apple-system, sans-serif;  /* body + subheaders (Futura PT via Adobe Fonts, Bariol fallback) */
 
   --maxw: 1040px;
@@ -108,15 +106,10 @@ a { color: var(--clay); }
   letter-spacing: 0.28em;
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--ochre);
+  color: var(--teal);
   margin: 0 0 0.9rem;
 }
 .eyebrow--light { color: var(--ochre); }
-
-/* Alternating flat section grounds (Wes Anderson color-blocking) */
-.section--details,
-.section--schedule,
-.section--faq { background: var(--sage); }
 
 /* ============================ NAV ============================ */
 .nav {
@@ -127,14 +120,13 @@ a { color: var(--clay); }
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem clamp(1rem, 4vw, 2.5rem);
-  background: color-mix(in srgb, var(--sand) 90%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  background: var(--dusk);
+  border-bottom: 1px solid color-mix(in srgb, #000 16%, transparent);
 }
 .nav__mark {
   font-family: var(--display);
   font-size: 1.5rem;
-  color: var(--ink);
+  color: var(--cream);
   text-decoration: none;
   letter-spacing: 0.02em;
 }
@@ -148,31 +140,53 @@ a { color: var(--clay); }
 }
 .nav__links a {
   text-decoration: none;
-  color: var(--ink);
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
+  color: var(--cream);
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
 }
-.nav__links a:hover { color: var(--clay); }
+.nav__links a:hover { color: var(--ochre); }
+/* Wes Anderson slash separators between nav items (desktop) */
+.nav__links li:not(:last-child)::after {
+  content: "/";
+  margin-left: 1.6rem;
+  color: color-mix(in srgb, var(--cream) 45%, transparent);
+  font-weight: 400;
+}
+@media (max-width: 760px) { .nav__links li::after { display: none; } }
 .nav__cta {
   background: var(--clay);
-  color: var(--ink) !important;
+  color: var(--cream) !important;
   border: 1.5px solid var(--clay);
   padding: 0.35rem 1.15rem;
   border-radius: 100px;
 }
-.nav__cta:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--ink) !important; }
+.nav__cta:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--cream) !important; }
 
 /* ---- Tabbed navigation: one panel at a time ---- */
 body.tabbed [hidden] { display: none !important; }
 body.tabbed .section__next,
 body.tabbed .hero__scroll { display: none; }
-.nav__links a.is-current { color: var(--clay); }
-.nav__links a.nav__cta.is-current { color: var(--ink) !important; }
+.nav__links a.is-current { color: var(--ochre); }
+.nav__links a.nav__cta.is-current { color: var(--cream) !important; }
 .is-active { animation: tabfade 0.4s ease both; }
 @keyframes tabfade {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: none; }
+}
+
+/* ---- Film grain overlay (sun-faded, Moonrise texture) ---- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.10;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
 }
 
 /* ---- Passcode gate (client-side privacy screen) ---- */
@@ -233,7 +247,7 @@ html.unlocked .gate { display: none; }
   border: none;
   border-radius: 100px;
   background: var(--clay);
-  color: var(--ink);
+  color: var(--cream);
   font-family: var(--body);
   font-size: 1rem;
   font-weight: 600;
@@ -251,12 +265,12 @@ html.unlocked .gate { display: none; }
 .nav__toggle {
   display: none;
   background: none;
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--cream);
   border-radius: 100px;
   padding: 0.3rem 0.9rem;
   font-family: var(--body);
   font-weight: 600;
-  color: var(--ink);
+  color: var(--cream);
   cursor: pointer;
 }
 
@@ -301,13 +315,13 @@ html.unlocked .gate { display: none; }
   letter-spacing: 0.02em;
   line-height: 0.95;
   margin: 0;
-  color: var(--yellow);
-  font-size: clamp(1.3rem, 6vw, 2.4rem);
+  color: var(--oxblood);
+  font-size: clamp(1.7rem, 7vw, 3rem);
   white-space: nowrap;
 }
 .std__amp {
   font-size: 0.8em;
-  color: var(--yellow);
+  color: color-mix(in srgb, var(--oxblood) 70%, var(--clay));
   padding: 0 0.04em;
 }
 
@@ -324,7 +338,7 @@ html.unlocked .gate { display: none; }
   width: min(78%, 430px, 44vh);
   /* the SVG is inlined below and inherits this color via currentColor,
      so it prints in ink and works even when opened straight from disk */
-  color: var(--ink);
+  color: var(--oxblood);
   line-height: 0;
 }
 .std__illustration-svg {
@@ -350,11 +364,11 @@ html.unlocked .gate { display: none; }
   font-family: var(--display);
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--ink);
+  letter-spacing: 0.05em;
+  color: var(--oxblood);
   margin: 0;
   line-height: 1.15;
-  font-size: clamp(0.85rem, 2.7vw, 1.25rem);
+  font-size: clamp(0.95rem, 3vw, 1.3rem);
 }
 .std__date { margin-top: 0.6rem; }
 .std__rsvp { margin-top: 0.9rem; }
@@ -380,7 +394,7 @@ html.unlocked .gate { display: none; }
   letter-spacing: 0.04em;
   text-decoration: none;
   background: var(--clay);
-  color: var(--ink);
+  color: var(--cream);
   padding: 0.85rem 2.2rem;
   border-radius: 100px;
   border: none;
@@ -407,12 +421,11 @@ html.unlocked .gate { display: none; }
 .section__title {
   font-family: var(--display);
   font-weight: normal;
-  color: var(--yellow);
-  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
   margin: 0 0 2.5rem;
   line-height: 1;
 }
-.section__title--light { color: var(--ink); }
+.section__title--light { color: var(--cream); }
 
 /* ---- Story ---- */
 .story {
@@ -801,7 +814,7 @@ html.unlocked .gate { display: none; }
 .rsvp-box .btn { width: 100%; margin-top: 0.2rem; }
 
 .rsvp-party__greeting {
-  color: var(--ink);
+  color: var(--cream);
   margin: 0 0 1.2rem;
   font-size: 1.05rem;
   line-height: 1.5;
@@ -820,7 +833,7 @@ html.unlocked .gate { display: none; }
   background: color-mix(in srgb, var(--cream) 9%, transparent);
   border: 1px solid color-mix(in srgb, var(--cream) 22%, transparent);
 }
-.rsvp-person__name { font-weight: 600; color: var(--ink); }
+.rsvp-person__name { font-weight: 600; color: var(--cream); }
 .rsvp-person__choices { display: flex; gap: 1rem; }
 .rsvp-person__choices label {
   display: flex;
@@ -844,14 +857,14 @@ html.unlocked .gate { display: none; }
   text-decoration: underline;
   cursor: pointer;
 }
-.rsvp-link:hover { color: var(--ink); }
+.rsvp-link:hover { color: var(--cream); }
 .rsvp-msg {
   margin: 0.9rem 0 0;
   font-size: 0.92rem;
   color: var(--rose);
 }
 .rsvp-done { text-align: center; }
-.rsvp-done__msg { color: var(--ink); font-size: 1.1rem; line-height: 1.55; margin: 0; }
+.rsvp-done__msg { color: var(--cream); font-size: 1.1rem; line-height: 1.55; margin: 0; }
 .rsvp__form { text-align: left; }
 .field { display: block; margin-bottom: 1.2rem; border: none; padding: 0; }
 .field__label {
@@ -874,7 +887,7 @@ html.unlocked .gate { display: none; }
   color: var(--ink);
 }
 .choices { display: flex; gap: 1.4rem; flex-wrap: wrap; }
-.choices label { display: flex; align-items: center; gap: 0.4rem; color: var(--ink); }
+.choices label { display: flex; align-items: center; gap: 0.4rem; color: var(--cream); }
 .choices input { width: auto; }
 
 /* ---- FAQ ---- */
@@ -899,7 +912,7 @@ html.unlocked .gate { display: none; }
 /* ============================ FOOTER ============================ */
 .footer {
   background: var(--dusk);
-  color: var(--ink);
+  color: var(--cream);
   text-align: center;
   padding: 3.5rem 1.5rem;
 }
@@ -927,13 +940,13 @@ input:focus-visible, textarea:focus-visible {
     left: 0;
     flex-direction: column;
     gap: 0;
-    background: var(--sand);
-    border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    background: var(--dusk);
+    border-bottom: 1px solid color-mix(in srgb, #000 16%, transparent);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
   }
-  .nav__links.is-open { max-height: 360px; }
+  .nav__links.is-open { max-height: 520px; }
   .nav__links li { width: 100%; text-align: center; }
   .nav__links li a { display: block; padding: 0.9rem; }
   .nav__cta { border: none; border-radius: 0; }
@@ -983,7 +996,7 @@ input:focus-visible, textarea:focus-visible {
   padding: 0.35rem 0.85rem;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
-.calbtn:hover { background: var(--clay); border-color: var(--clay); color: var(--ink); }
+.calbtn:hover { background: var(--clay); border-color: var(--clay); color: var(--cream); }
 
 /* ============================ TEXT-ME-THE-LINK ============================ */
 /* "Text it to yourself" — small + understated, tucked into the footer */
@@ -1045,7 +1058,7 @@ input:focus-visible, textarea:focus-visible {
 .textme__btn {
   flex: 0 0 auto;
   background: var(--clay);
-  color: var(--ink);
+  color: var(--cream);
   border: none;
   border-radius: 100px;
   padding: 0.5rem 1.2rem;
@@ -1083,7 +1096,7 @@ input:focus-visible, textarea:focus-visible {
   align-items: center;
   gap: 0.85rem;
   background: var(--dusk);
-  color: var(--ink);
+  color: var(--cream);
   padding: 0.9rem 1rem 0.9rem 1.15rem;
   border-radius: 16px;
   box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.45);
@@ -1098,7 +1111,7 @@ input:focus-visible, textarea:focus-visible {
   flex: 0 0 auto;
   margin-left: auto;
   background: color-mix(in srgb, var(--cream) 14%, transparent);
-  color: var(--ink);
+  color: var(--cream);
   border: none;
   border-radius: 50%;
   width: 1.9rem;
