@@ -359,7 +359,7 @@ html.unlocked .gate { display: none; }
 }
 .std__amp {
   font-size: 0.8em;
-  color: color-mix(in srgb, var(--oxblood) 70%, var(--clay));
+  color: inherit;   /* match the couple's names */
   padding: 0 0.04em;
 }
 
