@@ -694,6 +694,28 @@ html.unlocked .gate { display: none; }
   align-self: center;
 }
 .attire__pin-icon { flex: 0 0 auto; }
+/* Embedded Pinterest board */
+.pinboard {
+  align-self: center;
+  max-width: 100%;
+  margin: 0.4rem auto 0;
+  padding: 0.6rem;
+  background: var(--cream);
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  box-shadow: 0 12px 30px -18px rgba(0, 0, 0, 0.45);
+  overflow-x: auto;              /* scroll if the fixed-width widget exceeds a small screen */
+  text-align: center;
+}
+.pinboard > a[data-pin-do] { display: inline-block; }
+.attire__pin-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--clay);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.attire__pin-link:hover { text-decoration: underline; }
 .attire__reassure {
   max-width: 580px;
   margin: 2.2rem auto 0;
