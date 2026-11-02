@@ -1320,7 +1320,7 @@ input:focus-visible, textarea:focus-visible {
   font-family: 'TAY Benditos', var(--display);
   text-transform: none;
   letter-spacing: 0.01em;
-  font-size: clamp(2.4rem, 9vw, 4.2rem);
+  font-size: clamp(2.9rem, 11vw, 5.4rem);
   white-space: normal;
   line-height: 1.02;
 }
@@ -1329,8 +1329,9 @@ input:focus-visible, textarea:focus-visible {
   font-family: 'TAY Benditos', var(--display);
   text-transform: none;
   letter-spacing: 0.02em;
-  font-size: clamp(1rem, 3.4vw, 1.5rem);
+  font-size: clamp(1.1rem, 3.8vw, 1.7rem);
+  margin-top: 0.1rem;
 }
 @media (min-width: 640px) {
-  .hero__overlay .std__names { font-size: 4.2rem; }
+  .hero__overlay .std__names { font-size: 5.4rem; }
 }
