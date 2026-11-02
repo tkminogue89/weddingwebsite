@@ -1333,3 +1333,8 @@ input:focus-visible, textarea:focus-visible {
 
 /* Loading note shown while the RSVPify embed (third-party) fetches its form */
 .rsvp-embed__loading { text-align: center; color: var(--teal); font-size: 0.95rem; padding: 1.5rem 0; margin: 0; }
+
+/* After-party note below the Details event cards */
+.details__after { max-width: 40rem; margin: 2.25rem auto 0; text-align: center; color: var(--ink); font-size: 1rem; line-height: 1.6; }
+.details__after-link { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
+.details__after-link:hover, .details__after-link:focus-visible { color: var(--oxblood); }
