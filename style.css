@@ -1252,10 +1252,10 @@ input:focus-visible, textarea:focus-visible {
 }
 .hero__overlay .std__date { margin-top: 0.9rem; }
 
-/* The re-homed illustration, centered on the warm page ground */
-.section--illo { text-align: center; }
-.section--illo .std__scene { justify-content: center; }
-.section--illo .std__illustration { width: min(78%, 430px); }
+/* The Joshua Tree illustration, now a small motif above the footer sign-off */
+.footer__illo { text-align: center; line-height: 0; margin: 0 auto 1.5rem; }
+.footer__illo .std__scene { justify-content: center; }
+.footer__illo .std__illustration { width: min(58%, 230px); color: var(--oxblood); }
 
 /* Reduced motion: hold on the poster frame instead of playing the clip. */
 @media (prefers-reduced-motion: reduce) {
