@@ -1307,31 +1307,3 @@ input:focus-visible, textarea:focus-visible {
 /* RSVP deadline sub-line (the actual date under "Valentine's Day") */
 .rsvp__date-note { margin: 0.25rem 0 0; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
 .heart-icon { width: 0.82em; height: 0.82em; fill: var(--oxblood); vertical-align: -0.08em; margin-left: 0.08em; }
-
-/* ---- Trying TAYBenditos (hand-lettered) on the hero names + eyebrow ---- */
-@font-face {
-  font-family: 'TAY Benditos';
-  src: url('fonts/TAYBenditos.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-.hero__overlay .std__names {
-  font-family: 'TAY Benditos', var(--display);
-  text-transform: none;
-  letter-spacing: 0.01em;
-  font-size: clamp(2.9rem, 11vw, 5.4rem);
-  white-space: normal;
-  line-height: 1.02;
-}
-.hero__overlay .std__names .std__amp { font-size: 0.9em; }
-.hero__overlay .std__eyebrow {
-  font-family: 'TAY Benditos', var(--display);
-  text-transform: none;
-  letter-spacing: 0.02em;
-  font-size: clamp(1.1rem, 3.8vw, 1.7rem);
-  margin-top: 0.1rem;
-}
-@media (min-width: 640px) {
-  .hero__overlay .std__names { font-size: 5.4rem; }
-}
