@@ -1264,3 +1264,6 @@ input:focus-visible, textarea:focus-visible {
     background: #2a2b33 url("images/hero-poster.jpg") center 54% / cover no-repeat;
   }
 }
+
+/* RSVP deadline sub-line (the actual date under "Valentine's Day") */
+.rsvp__date-note { margin: 0.25rem 0 0; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
