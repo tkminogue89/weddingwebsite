@@ -1,4 +1,43 @@
 /* ============================================================
+   INVITATION FONTS — Mauren (display) + Satoshi (body)
+   Web fonts that match the printed save-the-date / details cards.
+   Files live in /fonts. Bone Quixote + Bariol (embedded below)
+   stay as offline fallbacks.
+   ============================================================ */
+@font-face {
+  font-family: 'Mauren';
+  src: url('fonts/mauren-regular.woff2') format('woff2'),
+       url('fonts/mauren-regular.woff') format('woff');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('fonts/Satoshi-Regular.woff2') format('woff2'),
+       url('fonts/Satoshi-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('fonts/Satoshi-Medium.woff2') format('woff2'),
+       url('fonts/Satoshi-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('fonts/Satoshi-Bold.woff2') format('woff2'),
+       url('fonts/Satoshi-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
    YOUR CUSTOM FONT — Bone Quixote
    The .woff2 loads first (small & fast); .otf is the fallback.
    ============================================================ */
@@ -51,8 +90,8 @@
   --dusk:  #5f7a89;   /* dusty slate blue — nav band + footer ground */
   --oxblood: #a5361a; /* deep rust — display headings + illustration */
 
-  --display: 'futura-pt-bold', 'Bone Quixote', serif;   /* headers = Futura PT Bold (Bone Quixote fallback) */
-  --body: 'futura-pt', 'Bariol', system-ui, -apple-system, sans-serif;  /* body + subheaders (Futura PT via Adobe Fonts, Bariol fallback) */
+  --display: 'Mauren', 'Bone Quixote', sans-serif;   /* invitation display face (names + headers) */
+  --body: 'Satoshi', 'Bariol', system-ui, -apple-system, sans-serif;  /* invitation body face */
 
   --maxw: 1040px;
   --r: 0;             /* rounding lives in the arches, not the boxes */
