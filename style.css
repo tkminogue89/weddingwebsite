@@ -1267,3 +1267,4 @@ input:focus-visible, textarea:focus-visible {
 
 /* RSVP deadline sub-line (the actual date under "Valentine's Day") */
 .rsvp__date-note { margin: 0.25rem 0 0; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+.heart-icon { width: 0.82em; height: 0.82em; fill: var(--oxblood); vertical-align: -0.08em; margin-left: 0.08em; }
