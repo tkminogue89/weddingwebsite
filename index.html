@@ -20,6 +20,9 @@
   <!-- Fonts: Mauren (display) + Satoshi (body) load from /fonts via @font-face in
        style.css, matching the printed invitations. Bone Quixote + Bariol stay
        embedded in style.css as offline fallbacks. -->
+  <!-- Warm the connection to the RSVPify embed host so its (third-party) form loads sooner -->
+  <link rel="preconnect" href="https://nateteriwedding.rsvpify.com" crossorigin>
+  <link rel="dns-prefetch" href="https://nateteriwedding.rsvpify.com">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -198,10 +201,10 @@
         <article class="card">
           <span class="card__label">Welcome Party</span>
           <h3 class="card__heading">6:00 PM</h3>
-          <p class="card__venue">The Desert Retreat</p>
+          <p class="card__venue">Desert Flower Retreat</p>
           <p class="card__addr">Friday, April 30 · Joshua Tree</p>
           <p class="card__note">Join us the night before to kick off the weekend in the desert.</p>
-          <a class="card__map" href="https://www.google.com/maps/search/?api=1&amp;query=The+Desert+Retreat+Joshua+Tree+CA" target="_blank" rel="noopener">📍 Open in Maps</a>
+          <a class="card__map" href="https://www.google.com/maps/search/?api=1&amp;query=Desert+Flower+Retreat%2C+4500+Desert+Flower+Ave%2C+Twentynine+Palms%2C+CA+92277" target="_blank" rel="noopener">📍 Open in Maps</a>
           <details class="card-cal">
             <summary class="card-cal__summary">Add to calendar</summary>
             <div class="card-cal__opts" data-cal="welcome"></div>
@@ -315,8 +318,24 @@
         <!-- RSVPify official embed. The script injects the form here.
              To change which event loads, edit the script src below. -->
         <div class="rsvp-embed">
+          <p class="rsvp-embed__loading" role="status">Loading the RSVP form&hellip;</p>
           <script type="text/javascript" src="https://nateteriwedding.rsvpify.com/embed"></script>
         </div>
+        <script>
+          /* Hide the "Loading…" note once RSVPify injects its form iframe. */
+          (function () {
+            var box = document.querySelector('.rsvp-embed');
+            if (!box) return;
+            var ph = box.querySelector('.rsvp-embed__loading');
+            if (!ph) return;
+            var clear = function () { if (ph) { ph.remove(); ph = null; } };
+            if (box.querySelector('iframe')) return clear();
+            var obs = new MutationObserver(function () {
+              if (box.querySelector('iframe')) { clear(); obs.disconnect(); }
+            });
+            obs.observe(box, { childList: true, subtree: true });
+          })();
+        </script>
 
         <!-- Text yourself the link so you can come back and RSVP later -->
         <div class="rsvp-textme">
@@ -708,7 +727,7 @@
     const CAL_EVENTS = {
       welcome: {
         title: 'Welcome Party — Teri & Nathan',
-        location: 'The Desert Retreat, Joshua Tree, CA',
+        location: 'Desert Flower Retreat, 4500 Desert Flower Ave, Twentynine Palms, CA 92277',
         details: 'Join us the night before for a desert welcome party!',
         start: '20270501T010000Z',   // 4/30 6:00 PM PDT
         end:   '20270501T040000Z',   // 4/30 9:00 PM PDT
