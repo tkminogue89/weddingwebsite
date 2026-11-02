@@ -57,25 +57,34 @@
     </ul>
   </nav>
 
-  <!-- Scrolling marquee ticker (Wes Anderson / Más o Menos style) -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track">
-      <span>Saturday May 1, 2027&nbsp;&nbsp;✦&nbsp;&nbsp;Joshua Tree, California&nbsp;&nbsp;✦&nbsp;&nbsp;See you in the desert&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
-      <span>Saturday May 1, 2027&nbsp;&nbsp;✦&nbsp;&nbsp;Joshua Tree, California&nbsp;&nbsp;✦&nbsp;&nbsp;See you in the desert&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
-    </div>
-  </div>
-
   <!-- ============================ HERO (Save-the-Date card) ============================ -->
   <header class="hero" id="top">
-    <article class="std-card">
-      <!-- EDIT: names -->
-      <h1 class="std__names">Teri <span class="std__amp">&amp;</span> Nathan</h1>
-      <p class="std__eyebrow">Are Getting Married</p>
+    <!-- Desert film (IMG_7077.mov, transcoded) with the save-the-date overlaid in
+           cream. Muted + looping; the illustration now lives in .section--illo below. -->
+      <div class="hero__stage">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="images/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+          <source src="images/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero__scrim" aria-hidden="true"></div>
+        <div class="hero__overlay">
+          <!-- EDIT: names -->
+          <h1 class="std__names">Teri <span class="std__amp">&amp;</span> Nathan</h1>
+          <p class="std__eyebrow">Are Getting Married</p>
+          <!-- EDIT: date + place -->
+          <p class="std__date">Saturday May 1, 2027</p>
+          <p class="std__place">Joshua Tree, CA</p>
+        </div>
+      </div>
 
-      <!-- Joshua Tree illustration (JTIllustrationV2.svg) — the crescent moon is
-           part of the artwork. A "see you in the desert" marquee scrolls across
-           the bottom of the illustration. -->
-      <div class="std__scene">
+    <article class="std-card std-card--actions">
+      <a class="btn btn--ink std__rsvp" href="#rsvp">RSVP</a>
+      <p class="std__cta-line">See you in the desert</p>
+    </article>
+    <a class="hero__scroll" href="#story" aria-label="Scroll to content">↓</a>
+  </header>
+
+  <section class="section section--illo" aria-label="Joshua Tree illustration">
+    <div class="std__scene">
         <div class="std__illustration" role="img" aria-label="Joshua trees and a desert road">
 <svg class="std__illustration-svg" preserveAspectRatio="xMidYMid meet" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2636.2 1879.19">
   <defs>
@@ -114,16 +123,7 @@
 </svg>
         </div>
       </div>
-
-      <!-- EDIT: date + place -->
-      <p class="std__date">Saturday May 1, 2027</p>
-      <p class="std__place">Joshua Tree, CA</p>
-
-      <a class="btn btn--ink std__rsvp" href="#rsvp">RSVP</a>
-      <p class="std__cta-line">See you in the desert</p>
-    </article>
-    <a class="hero__scroll" href="#story" aria-label="Scroll to content">↓</a>
-  </header>
+  </section>
 
   <main>
 
@@ -450,7 +450,7 @@
     (function gate() {
       const gateEl = document.getElementById('gate');
       if (!gateEl) return;
-      const PASS  = 'bW9qYXZl';            // base64 of "joshuatree"
+      const PASS  = 'bW9qYXZl';                    // base64 of "mojave"
       const form  = document.getElementById('gate-form');
       const input = document.getElementById('gate-input');
       const error = document.getElementById('gate-error');
