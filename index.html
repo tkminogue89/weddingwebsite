@@ -52,7 +52,6 @@
       <li><a href="#story">Story</a></li>
       <li><a href="#details">Details</a></li>
       <li><a href="#attire">Attire</a></li>
-      <li><a href="#schedule">Schedule</a></li>
       <li><a href="#travel">Travel</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a class="nav__cta" href="#rsvp">RSVP</a></li>
@@ -280,25 +279,6 @@
       </div>
 
       <p class="attire__reassure">Consider this inspiration, not instruction. Above all, we want you <strong>comfortable</strong> — wear something you already love and feel great in. Weddings are expensive enough without a shopping spree on our account, so please don't feel you need anything new. Just come as you, ready to dance in the desert.</p>
-    </section>
-
-    <!-- ============================ SCHEDULE ============================ -->
-    <!-- A timeline is a real sequence, so the timed markers earn their place. -->
-    <section class="section section--schedule" id="schedule">
-      <p class="eyebrow">The weekend</p>
-      <h2 class="section__title">Schedule</h2>
-      <p class="section__lead">How the whole weekend flows, start to finish.</p>
-      <ol class="timeline">
-        <li class="timeline__day">Friday · April 30</li>
-        <li class="timeline__item"><span class="timeline__time">6:00</span><span class="timeline__what">Welcome party at The Desert Retreat</span></li>
-        <li class="timeline__day">Saturday · May 1</li>
-        <li class="timeline__item"><span class="timeline__time">3:30</span><span class="timeline__what">Guests arrive &amp; find a seat</span></li>
-        <li class="timeline__item"><span class="timeline__time">4:00</span><span class="timeline__what">Ceremony in the desert</span></li>
-        <li class="timeline__item"><span class="timeline__time">4:30</span><span class="timeline__what">Cocktails &amp; golden hour</span></li>
-        <li class="timeline__item"><span class="timeline__time">5:30</span><span class="timeline__what">Dinner under the stars</span></li>
-        <li class="timeline__item"><span class="timeline__time">7:30</span><span class="timeline__what">Cake, toasts &amp; first dance</span></li>
-        <li class="timeline__item"><span class="timeline__time">8:00</span><span class="timeline__what">Dancing into the night</span></li>
-      </ol>
     </section>
 
     <!-- ============================ TRAVEL ============================ -->
@@ -892,7 +872,7 @@
        Hash-routed, so #travel deep-links and the back button both work.
        ====================================================================== */
     (function tabs() {
-      const ids = ['top', 'story', 'details', 'attire', 'schedule', 'travel', 'rsvp', 'faq'];
+      const ids = ['top', 'story', 'details', 'attire', 'travel', 'rsvp', 'faq'];
       const panels = ids.map(id => document.getElementById(id)).filter(Boolean);
       if (panels.length < 2) return;
 
