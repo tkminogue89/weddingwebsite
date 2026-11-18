@@ -1288,11 +1288,21 @@ input:focus-visible, textarea:focus-visible {
   text-shadow: 0 1px 2px rgba(20,13,7,0.85), 0 1px 14px rgba(20,13,7,0.5);
 }
 .hero__overlay .std__date { margin-top: 0.9rem; }
-.hero__overlay .std-card--actions { margin-top: 1.5rem; padding-top: 0; padding-bottom: 0; }
+.hero__overlay .std-card--actions { margin: 1.5rem auto 0; padding-top: 0; padding-bottom: 0; }
 .hero__overlay .std__cta-line {
   color: var(--cream);
   margin-top: 0.75rem;
   text-shadow: 0 1px 2px rgba(20,13,7,0.9), 0 1px 14px rgba(20,13,7,0.5);
+}
+/* Beige RSVP pill reads cleanly over the busy video */
+.hero__overlay .std__rsvp {
+  background: var(--cream);
+  color: var(--oxblood);
+  box-shadow: 0 6px 20px rgba(20,13,7,0.30);
+}
+.hero__overlay .std__rsvp:hover {
+  background: color-mix(in srgb, var(--cream) 88%, var(--ochre));
+  color: var(--oxblood);
 }
 
 /* The Joshua Tree illustration, now a small motif above the footer sign-off */
