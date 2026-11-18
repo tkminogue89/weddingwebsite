@@ -180,6 +180,7 @@ a { color: var(--clay); }
 .nav__links a {
   text-decoration: none;
   color: var(--cream);
+  font-family: var(--body);
   font-weight: 600;
   font-size: 0.78rem;
   text-transform: uppercase;
@@ -344,15 +345,12 @@ html.unlocked .gate { display: none; }
 /* ============================ HERO ============================ */
 .hero {
   position: relative;
-  /* fit the whole card + scroll arrow within one screen (below the nav) */
-  min-height: calc(100vh - 4.75rem);
-  min-height: calc(100svh - 4.75rem);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: 0.75rem 1.25rem 2.75rem;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -1032,24 +1030,24 @@ input:focus-visible, textarea:focus-visible {
 
 /* ============================ RESPONSIVE ============================ */
 @media (max-width: 760px) {
-  .nav__toggle { display: block; }
-  .nav__links {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
+  /* Show every tab right in the banner — no hamburger on mobile */
+  .nav {
     flex-direction: column;
-    gap: 0;
-    background: var(--dusk);
-    border-bottom: 1px solid color-mix(in srgb, #000 16%, transparent);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    gap: 0.5rem;
+    padding: 0.7rem 0.75rem 0.85rem;
   }
-  .nav__links.is-open { max-height: 520px; }
-  .nav__links li { width: 100%; text-align: center; }
-  .nav__links li a { display: block; padding: 0.9rem; }
-  .nav__cta { border: none; border-radius: 0; }
+  .nav__toggle { display: none; }
+  .nav__links {
+    position: static;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0.9rem;
+    max-height: none;
+    overflow: visible;
+  }
+  .nav__links li { width: auto; text-align: center; }
+  .nav__links li a { display: inline-block; padding: 0.2rem 0; }
+  .nav__cta { padding: 0.25rem 0.95rem; border: 1.5px solid var(--clay); border-radius: 100px; }
 
   .story { grid-template-columns: 1fr; }
   .cards, .cards--two { grid-template-columns: 1fr; }
@@ -1234,20 +1232,20 @@ input:focus-visible, textarea:focus-visible {
    a barely-there golden wash keeps the type legible. Illustration lives in .section--illo below. */
 .hero__stage {
   position: relative;
-  width: min(90%, 430px);
-  margin: 0.5rem auto 0.4rem;
+  width: 100%;
+  margin: 0;
   aspect-ratio: 1 / 1;
   max-height: 60vh;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   background: #2a2b33;
-  box-shadow: 0 14px 34px rgba(58,42,29,0.22);
+  box-shadow: none;
   display: flex;
   align-items: flex-start;
   justify-content: center;
 }
 @media (min-width: 640px) {
-  .hero__stage { width: min(92%, 1040px); aspect-ratio: 16 / 10; margin-top: 1.1rem; }
+  .hero__stage { width: 100%; aspect-ratio: 16 / 10; }
   .hero__video { object-position: center 60%; }
   .hero__overlay { padding-top: 4.5%; }
   .hero__overlay .std__names { font-size: 3.1rem; }
@@ -1290,6 +1288,12 @@ input:focus-visible, textarea:focus-visible {
   text-shadow: 0 1px 2px rgba(20,13,7,0.85), 0 1px 14px rgba(20,13,7,0.5);
 }
 .hero__overlay .std__date { margin-top: 0.9rem; }
+.hero__overlay .std-card--actions { margin-top: 1.5rem; padding-top: 0; padding-bottom: 0; }
+.hero__overlay .std__cta-line {
+  color: var(--cream);
+  margin-top: 0.75rem;
+  text-shadow: 0 1px 2px rgba(20,13,7,0.9), 0 1px 14px rgba(20,13,7,0.5);
+}
 
 /* The Joshua Tree illustration, now a small motif above the footer sign-off */
 .footer__illo { text-align: center; line-height: 0; margin: 0 auto 1.5rem; }
@@ -1320,14 +1324,12 @@ input:focus-visible, textarea:focus-visible {
   font-display: swap;
 }
 .eyebrow,
-.std__eyebrow,
 .std__cta-line,
 .gate__eyebrow,
 .card__label,
 .weather__head,
 .field__label,
-.story__emotion,
-.nav__links a {
+.story__emotion {
   font-family: 'TAY Benditos', var(--body);
 }
 
@@ -1338,3 +1340,94 @@ input:focus-visible, textarea:focus-visible {
 .details__after { max-width: 40rem; margin: 2.25rem auto 0; text-align: center; color: var(--ink); font-size: 1rem; line-height: 1.6; }
 .details__after-link { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
 .details__after-link:hover, .details__after-link:focus-visible { color: var(--oxblood); }
+
+/* ============================ MENU ============================ */
+.section--menu .menu { max-width: 680px; margin: 0 auto; text-align: center; }
+.menu__course { margin: 0 0 2.75rem; }
+.menu__course:last-child { margin-bottom: 0; }
+.menu__course-title {
+  font-family: var(--display);
+  font-weight: normal;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  line-height: 1;
+  color: var(--oxblood);
+  margin: 0 0 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.menu__course-title::before,
+.menu__course-title::after {
+  content: "";
+  flex: 0 1 56px;
+  height: 1px;
+  background: color-mix(in srgb, var(--ochre) 85%, transparent);
+}
+.menu__course-note {
+  font-family: var(--body);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 0 0 1.5rem;
+}
+.menu__list { list-style: none; margin: 0; padding: 0; }
+.menu__item { margin: 0 0 1.15rem; }
+.menu__item:last-child { margin-bottom: 0; }
+.menu__item-name {
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0 0 0.2rem;
+}
+.menu__desc {
+  max-width: 34rem;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+}
+.menu__tag {
+  display: inline-block;
+  font-family: var(--body);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--olive);
+  vertical-align: 0.18em;
+  margin-left: 0.15rem;
+}
+.menu__legend {
+  max-width: 24rem;
+  margin: 3.25rem auto 0;
+  padding-top: 1.6rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+}
+.menu__legend .menu__tag { vertical-align: baseline; margin-left: 0; }
+.menu__footnote {
+  max-width: 40rem;
+  margin: 1rem auto 0;
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--ink) 62%, transparent);
+}
+
+.menu__allergen {
+  margin: 1.1rem auto 0;
+  text-align: center;
+  font-family: var(--body);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--teal);
+}
