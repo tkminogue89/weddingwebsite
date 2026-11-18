@@ -1015,17 +1015,18 @@ html.unlocked .gate { display: none; }
 
 /* ============================ FOOTER ============================ */
 .footer {
-  background: var(--dusk);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--ink);
   text-align: center;
   padding: 3.5rem 1.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
 }
 .footer__names {
   font-family: var(--display);
   font-size: clamp(2.2rem, 7vw, 3.4rem);
   margin: 0 0 0.5rem;
 }
-.footer__line { margin: 0; letter-spacing: 0.12em; font-size: 0.9rem; color: color-mix(in srgb, var(--cream) 75%, transparent); }
+.footer__line { margin: 0; letter-spacing: 0.12em; font-size: 0.9rem; color: color-mix(in srgb, var(--ink) 68%, transparent); }
 
 /* ============================ FOCUS / A11Y ============================ */
 a:focus-visible, button:focus-visible, summary:focus-visible,
@@ -1114,7 +1115,11 @@ input:focus-visible, textarea:focus-visible {
 .footer__textme-label {
   font-size: 0.82rem;
   letter-spacing: 0.06em;
-  color: color-mix(in srgb, var(--cream) 65%, transparent);
+  color: color-mix(in srgb, var(--ink) 58%, transparent);
+}
+.footer__textme .textme__input {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
 }
 
 /* same widget, below the embedded form (now on a light background) */
@@ -1328,7 +1333,7 @@ input:focus-visible, textarea:focus-visible {
 /* The Joshua Tree illustration, now a small motif above the footer sign-off */
 .footer__illo { text-align: center; line-height: 0; margin: 0 auto 1.5rem; }
 .footer__illo .std__scene { justify-content: center; }
-.footer__illo .std__illustration { width: min(58%, 230px); color: var(--cream); }
+.footer__illo .std__illustration { width: min(58%, 230px); color: var(--oxblood); }
 
 /* Reduced motion: hold on the poster frame instead of playing the clip. */
 @media (prefers-reduced-motion: reduce) {
