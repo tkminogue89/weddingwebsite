@@ -1292,8 +1292,10 @@ input:focus-visible, textarea:focus-visible {
 /* Mobile: group the text into one cohesive block near the bottom,
    so the sky + mountain/tree horizon stay visible above it. */
 @media (max-width: 639px) {
-  .hero__stage { height: 64vh; }
-  .hero__video { object-position: center 64%; }
+  .hero__stage { height: 60vh; }
+  /* The clip is a tall, sky-heavy portrait; zoom in from the bottom so the
+     land fills the frame instead of mostly sky. */
+  .hero__video { object-position: center 55%; transform: scale(1.45); transform-origin: center bottom; }
   .hero__overlay { justify-content: flex-end; padding: 0 5% 11%; }
   /* More breathing room between the stacked lines on phones */
   .hero__overlay .std__eyebrow { margin-top: 0.95rem; }
