@@ -89,6 +89,7 @@
   --teal:  #56808a;   /* dusty teal — cool text accents */
   --dusk:  #5f7a89;   /* dusty slate blue — nav band + footer ground */
   --oxblood: #a5361a; /* deep rust — display headings + illustration */
+  --terracotta: #b85c20; /* warm burnt orange — nav banner */
 
   --display: 'Mauren', 'Bone Quixote', sans-serif;   /* invitation display face (names + headers) */
   --body: 'Satoshi', 'Bariol', system-ui, -apple-system, sans-serif;  /* invitation body face */
@@ -159,7 +160,7 @@ a { color: var(--clay); }
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem clamp(1rem, 4vw, 2.5rem);
-  background: var(--dusk);
+  background: var(--terracotta);
   border-bottom: 1px solid color-mix(in srgb, #000 16%, transparent);
 }
 .nav__mark {
@@ -196,20 +197,20 @@ a { color: var(--clay); }
 }
 @media (max-width: 760px) { .nav__links li::after { display: none; } }
 .nav__cta {
-  background: var(--clay);
-  color: var(--cream) !important;
-  border: 1.5px solid var(--clay);
+  background: var(--cream);
+  color: var(--oxblood) !important;
+  border: 1.5px solid var(--cream);
   padding: 0.35rem 1.15rem;
   border-radius: 100px;
 }
-.nav__cta:hover { background: var(--oxblood); border-color: var(--oxblood); color: var(--cream) !important; }
+.nav__cta:hover { background: var(--sand); border-color: var(--sand); color: var(--oxblood) !important; }
 
 /* ---- Tabbed navigation: one panel at a time ---- */
 body.tabbed [hidden] { display: none !important; }
 body.tabbed .section__next,
 body.tabbed .hero__scroll { display: none; }
-.nav__links a.is-current { color: var(--ochre); }
-.nav__links a.nav__cta.is-current { color: var(--cream) !important; }
+.nav__links a.is-current { color: var(--cream); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+.nav__links a.nav__cta.is-current { color: var(--oxblood) !important; text-decoration: none; }
 .is-active { animation: tabfade 0.4s ease both; }
 @keyframes tabfade {
   from { opacity: 0; transform: translateY(10px); }
@@ -1052,7 +1053,7 @@ input:focus-visible, textarea:focus-visible {
   }
   .nav__links li { width: auto; text-align: center; }
   .nav__links li a { display: inline-block; padding: 0.2rem 0; }
-  .nav__cta { padding: 0.25rem 0.95rem; border: 1.5px solid var(--clay); border-radius: 100px; }
+  .nav__cta { padding: 0.25rem 0.95rem; border: 1.5px solid var(--cream); border-radius: 100px; }
 
   .story { grid-template-columns: 1fr; }
   .cards, .cards--two { grid-template-columns: 1fr; }
