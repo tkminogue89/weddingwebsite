@@ -1295,6 +1295,11 @@ input:focus-visible, textarea:focus-visible {
   .hero__stage { height: 64vh; }
   .hero__video { object-position: center 64%; }
   .hero__overlay { justify-content: flex-end; padding: 0 5% 11%; }
+  /* More breathing room between the stacked lines on phones */
+  .hero__overlay .std__eyebrow { margin-top: 0.95rem; }
+  .hero__overlay .std__date { margin-top: 1.5rem; }
+  .hero__overlay .std__rsvp { margin-top: 1.9rem; }
+  .hero__overlay .std__cta-line { margin-top: 1.1rem; }
 }
 .hero__overlay .std__names {
   color: var(--cream);
