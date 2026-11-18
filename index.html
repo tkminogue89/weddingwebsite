@@ -71,12 +71,14 @@
         </video>
         <div class="hero__scrim" aria-hidden="true"></div>
         <div class="hero__overlay">
-          <!-- EDIT: names -->
-          <h1 class="std__names">Teri <span class="std__amp">&amp;</span> Nathan</h1>
-          <p class="std__eyebrow">Are Getting Married</p>
-          <!-- EDIT: date + place -->
-          <p class="std__date">Saturday May 1, 2027</p>
-          <p class="std__place">Joshua Tree, CA</p>
+          <div class="hero__overlay-top">
+            <!-- EDIT: names -->
+            <h1 class="std__names">Teri <span class="std__amp">&amp;</span> Nathan</h1>
+            <p class="std__eyebrow">Are Getting Married</p>
+            <!-- EDIT: date + place -->
+            <p class="std__date">Saturday May 1, 2027</p>
+            <p class="std__place">Joshua Tree, CA</p>
+          </div>
           <article class="std-card std-card--actions">
             <a class="btn btn--ink std__rsvp" href="#rsvp">RSVP</a>
             <p class="std__cta-line">See you in the desert</p>
@@ -427,17 +429,6 @@
             obs.observe(box, { childList: true, subtree: true });
           })();
         </script>
-
-        <!-- Text yourself the link so you can come back and RSVP later -->
-        <div class="rsvp-textme">
-          <span class="rsvp-textme__label">Not ready yet? Text yourself the link.</span>
-          <form class="textme__form" novalidate>
-            <input class="textme__input" type="tel" inputmode="numeric"
-                   placeholder="(555) 123-4567" autocomplete="tel" maxlength="14" aria-label="Your mobile number">
-            <button class="textme__btn" type="submit"><span class="textme__btn-label">Send</span></button>
-          </form>
-          <p class="textme__status" role="status" hidden></p>
-        </div>
       </div>
     </section>
 
