@@ -531,7 +531,11 @@
         try { localStorage.setItem('tn-unlocked', '1'); } catch (e) {}
         document.documentElement.classList.add('unlocked');
         gateEl.classList.add('is-unlocked');
-        setTimeout(() => gateEl.remove(), 500);
+        // Dismiss the mobile keyboard and snap back to the top — otherwise the
+        // page is left scrolled to an awkward middle position after unlocking.
+        try { input.blur(); } catch (e) {}
+        window.scrollTo(0, 0);
+        setTimeout(() => { gateEl.remove(); window.scrollTo(0, 0); }, 500);
       }
 
       form.addEventListener('submit', e => {
