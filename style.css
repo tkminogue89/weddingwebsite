@@ -228,6 +228,11 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 140px 140px;
 }
+/* Soften the grain on larger screens, where the upscaled hero video
+   makes the texture read as noise. */
+@media (min-width: 640px) {
+  body::after { opacity: 0.045; }
+}
 
 /* ---- Scrolling marquee ticker ---- */
 .ticker {
@@ -1281,7 +1286,7 @@ input:focus-visible, textarea:focus-visible {
 /* Mobile: group the text into one cohesive block near the bottom,
    so the sky + mountain/tree horizon stay visible above it. */
 @media (max-width: 639px) {
-  .hero__overlay { justify-content: flex-end; padding: 0 5% 9%; }
+  .hero__overlay { justify-content: flex-end; padding: 0 5% 13%; }
 }
 .hero__overlay .std__names {
   color: var(--cream);
