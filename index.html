@@ -528,12 +528,6 @@
     </div>
   </footer>
 
-  <!-- Add-to-Home-Screen prompt — mobile only, remembers when dismissed -->
-  <div class="a2hs" id="a2hs" role="dialog" aria-live="polite" hidden>
-    <span class="a2hs__icon" id="a2hs-icon" aria-hidden="true"></span>
-    <p class="a2hs__text" id="a2hs-text"></p>
-    <button class="a2hs__close" id="a2hs-close" type="button" aria-label="Dismiss">&times;</button>
-  </div>
 
   <script>
     /* ======================================================================
@@ -947,42 +941,6 @@
           }
         });
       });
-    })();
-
-    /* ======================================================================
-       ADD TO HOME SCREEN  —  shows once on iOS / Android until dismissed.
-       ====================================================================== */
-    (function addToHomeScreen() {
-      const banner = document.getElementById('a2hs');
-      if (!banner) return;
-      if (localStorage.getItem('a2hs-dismissed') === '1') return;
-
-      const ua = navigator.userAgent || '';
-      const isIOS = /iphone|ipad|ipod/i.test(ua) ||
-                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      const isAndroid = /android/i.test(ua);
-      // already installed / running as an app? don't nag.
-      const installed = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
-      if (installed || (!isIOS && !isAndroid)) return;
-
-      const text = document.getElementById('a2hs-text');
-      const icon = document.getElementById('a2hs-icon');
-      if (isIOS) {
-        text.innerHTML = 'Tap the <strong>Share</strong> icon, then <strong>Add to Home Screen</strong>.';
-        icon.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>';
-      } else {
-        text.innerHTML = 'Tap the <strong>⋮</strong> menu, then <strong>Add to Home Screen</strong>.';
-        icon.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
-      }
-
-      document.getElementById('a2hs-close').addEventListener('click', () => {
-        banner.classList.remove('is-shown');
-        localStorage.setItem('a2hs-dismissed', '1');
-        setTimeout(() => { banner.hidden = true; }, 300);
-      });
-
-      banner.hidden = false;
-      requestAnimationFrame(() => banner.classList.add('is-shown'));
     })();
 
     /* ======================================================================

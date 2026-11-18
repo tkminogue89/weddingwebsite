@@ -1235,7 +1235,7 @@ input:focus-visible, textarea:focus-visible {
   width: 100%;
   margin: 0;
   aspect-ratio: 1 / 1;
-  max-height: 60vh;
+  max-height: 76vh;
   border-radius: 0;
   overflow: hidden;
   background: #2a2b33;
