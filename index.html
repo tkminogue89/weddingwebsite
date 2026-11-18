@@ -514,6 +514,31 @@
        To change the code, replace PASS with btoa('yournewcode')
        (the gate lowercases + trims what the guest types).
        ====================================================================== */
+    /* ======================================================================
+       HERO VIDEO — force muted autoplay (iOS blocks it unless muted is set in
+       JS and play() is called), with a tap-anywhere fallback. Exposed on
+       window so the passcode gate can start it on unlock.
+       ====================================================================== */
+    (function heroVideo() {
+      const v = document.querySelector('.hero__video');
+      if (!v) return;
+      const play = () => {
+        try {
+          v.muted = true;
+          v.setAttribute('muted', '');
+          const p = v.play();
+          if (p && p.catch) p.catch(() => {});
+        } catch (e) {}
+      };
+      window.__playHero = play;
+      play();
+      v.addEventListener('loadeddata', play, { once: true });
+      v.addEventListener('canplay', play, { once: true });
+      ['touchstart', 'pointerdown', 'click'].forEach(ev =>
+        document.addEventListener(ev, play, { once: true, passive: true }));
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) play(); });
+    })();
+
     (function gate() {
       const gateEl = document.getElementById('gate');
       if (!gateEl) return;
@@ -531,6 +556,9 @@
         try { localStorage.setItem('tn-unlocked', '1'); } catch (e) {}
         document.documentElement.classList.add('unlocked');
         gateEl.classList.add('is-unlocked');
+        // The passcode submit is a user gesture — use it to kick off the muted
+        // hero video, which iOS won't otherwise autoplay.
+        try { if (window.__playHero) window.__playHero(); } catch (e) {}
         // Dismiss the mobile keyboard and snap back to the top — otherwise the
         // page is left scrolled to an awkward middle position after unlocking.
         try { input.blur(); } catch (e) {}
