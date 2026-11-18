@@ -1473,3 +1473,6 @@ input:focus-visible, textarea:focus-visible {
   font-weight: 700;
   color: var(--teal);
 }
+
+.menu__footnote-link { color: var(--clay); text-decoration: underline; text-underline-offset: 2px; }
+.menu__footnote-link:hover, .menu__footnote-link:focus-visible { color: var(--oxblood); }
