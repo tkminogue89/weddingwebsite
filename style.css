@@ -1234,8 +1234,8 @@ input:focus-visible, textarea:focus-visible {
   position: relative;
   width: 100%;
   margin: 0;
-  aspect-ratio: 4 / 5;
-  max-height: 82vh;
+  height: 85vh;
+  max-height: none;
   border-radius: 0;
   overflow: hidden;
   background: #2a2b33;
@@ -1245,9 +1245,9 @@ input:focus-visible, textarea:focus-visible {
   justify-content: center;
 }
 @media (min-width: 640px) {
-  .hero__stage { width: 100%; aspect-ratio: auto; height: 85vh; max-height: none; }
+  .hero__stage { width: 100%; height: 85vh; }
   .hero__video { object-position: center 60%; }
-  .hero__overlay { padding: 6% 5%; }
+  .hero__overlay { padding: 6% 5%; justify-content: space-between; }
   .hero__overlay .std__names { font-size: 3.1rem; }
   .hero__overlay .std__eyebrow { font-size: 0.9rem; margin-top: 0.7rem; }
   .hero__overlay .std__date,
@@ -1273,9 +1273,16 @@ input:focus-visible, textarea:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 7% 5%;
+  padding: 6% 5%;
 }
 .hero__overlay-top { width: 100%; }
+.hero__overlay-top .std__place { margin-bottom: 0.4rem; }
+
+/* Mobile: group the text into one cohesive block near the bottom,
+   so the sky + mountain/tree horizon stay visible above it. */
+@media (max-width: 639px) {
+  .hero__overlay { justify-content: flex-end; padding: 0 5% 9%; }
+}
 .hero__overlay .std__names {
   color: var(--cream);
   font-size: clamp(1.5rem, 5.4vw, 2.5rem);
