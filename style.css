@@ -1548,3 +1548,17 @@ input:focus-visible, textarea:focus-visible {
   pointer-events: none;
   backdrop-filter: blur(3px);
 }
+
+/* Getting there / Food rows on the Schedule cards */
+.card__info { margin: 1rem 0 0; padding: 0.9rem 0 0; border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); display: grid; gap: 0.7rem; }
+.card__info div { margin: 0; }
+.card__info dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clay);
+  margin: 0 0 0.15rem;
+}
+.card__info dd { margin: 0; font-size: 0.95rem; line-height: 1.55; }
+.card__info + .card__map { display: inline-block; margin-top: 1rem; }
