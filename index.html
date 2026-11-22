@@ -199,9 +199,17 @@
       <p class="eyebrow">The day</p>
       <h2 class="section__title">Schedule</h2>
       <p class="section__lead">The key events and where to be — tap any one for directions or to drop it on your calendar.</p>
-      <div class="cards">
+      <div class="cards cards--schedule">
 
         <article class="card">
+          <!-- Venue photos: swipe on phones, arrows on desktop. Add/remove <img> lines freely. -->
+          <div class="card__photos" data-photos>
+            <div class="card__photos-track">
+              <img src="images/venue-welcome-1.jpg" alt="Aerial view of Desert Flower Retreat at sunset" loading="lazy" width="1200" height="797">
+              <img src="images/venue-welcome-2.jpg" alt="View of the Joshua Tree mountains from Desert Flower Retreat" loading="lazy" width="1200" height="673">
+              <img src="images/venue-welcome-3.jpg" alt="Golden desert and mountains near Desert Flower Retreat" loading="lazy" width="1200" height="671">
+            </div>
+          </div>
           <span class="card__label">Welcome Party</span>
           <h3 class="card__heading">6:00 PM</h3>
           <p class="card__venue">Desert Flower Retreat</p>
@@ -215,6 +223,14 @@
         </article>
 
         <article class="card">
+          <div class="card__photos" data-photos>
+            <div class="card__photos-track">
+              <img src="images/venue-sacred-sands-1.jpg" alt="Sacred Sands on a desert hillside in Joshua Tree" loading="lazy" width="1500" height="635">
+              <img src="images/venue-sacred-sands-5.jpg" alt="The Sacred Sands sign and main building under a blue desert sky" loading="lazy" width="1248" height="924">
+              <img src="images/venue-sacred-sands-8.jpg" alt="The Sacred Sands courtyard with desert views beyond" loading="lazy" width="1240" height="906">
+              <img src="images/venue-sacred-sands-7.jpg" alt="Sacred Sands set against the mountains under a deep blue sky" loading="lazy" width="1242" height="908">
+            </div>
+          </div>
           <span class="card__label">Ceremony</span>
           <h3 class="card__heading">4:00 PM</h3>
           <!-- EDIT: confirm time + add the full street address -->
@@ -229,6 +245,13 @@
         </article>
 
         <article class="card">
+          <div class="card__photos" data-photos>
+            <div class="card__photos-track">
+              <img src="images/venue-sacred-sands-4.jpg" alt="Aerial view of long dinner tables set in the Sacred Sands courtyard" loading="lazy" width="1362" height="930">
+              <img src="images/venue-sacred-sands-3.jpg" alt="Fire pit lounge at Sacred Sands overlooking the desert and mountains" loading="lazy" width="1246" height="962">
+              <img src="images/venue-sacred-sands-6.jpg" alt="Prickly pear cactus in front of the Sacred Sands courtyard" loading="lazy" width="1250" height="912">
+            </div>
+          </div>
           <span class="card__label">Cocktail Hour &amp; Reception</span>
           <h3 class="card__heading">4:30 – 10 PM</h3>
           <p class="card__venue">Sacred Sands</p>
@@ -829,6 +852,18 @@
       }, { passive: true });
 
       render();
+    });
+
+    /* Venue photo strips on the Schedule cards: swipe, or click a photo for the next one */
+    document.querySelectorAll('[data-photos]').forEach(box => {
+      const track = box.querySelector('.card__photos-track');
+      const n = track.querySelectorAll('img').length;
+      if (n < 2) return;
+      box.classList.add('is-multi');
+      track.addEventListener('click', () => {
+        const i = Math.round(track.scrollLeft / track.clientWidth);
+        track.scrollTo({ left: ((i + 1) % n) * track.clientWidth, behavior: 'smooth' });
+      });
     });
 
     /* ======================================================================
