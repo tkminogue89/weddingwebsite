@@ -1582,3 +1582,4 @@ input:focus-visible, textarea:focus-visible {
 .area-map__num { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--oxblood); color: var(--cream); font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
 .area-map__swatch { flex: none; width: 22px; height: 14px; border-radius: 7px; border: 1.5px dashed var(--clay); background: color-mix(in srgb, var(--clay) 13%, transparent); }
 .area-map__note { margin: 0.6rem 0 0; font-size: 0.82rem; color: color-mix(in srgb, var(--ink) 65%, transparent); }
+.area-map__pin--hotel circle, .area-map__num--hotel { fill: var(--dusk); background: var(--dusk); }
