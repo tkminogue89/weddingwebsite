@@ -1504,3 +1504,30 @@ input:focus-visible, textarea:focus-visible {
   scroll-snap-align: start;
 }
 .card__photos.is-multi .card__photos-track { cursor: pointer; }
+
+/* ---------- Schedule: one event per row, top-to-bottom ---------- */
+.cards--schedule {
+  grid-template-columns: 1fr;
+  max-width: 940px;
+  margin: 0 auto;
+  gap: 1.75rem;
+}
+@media (min-width: 760px) {
+  /* photo on the left, details on the right */
+  .cards--schedule .card:has(.card__photos) {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    column-gap: 2.25rem;
+    align-content: start;
+    padding: 1.6rem;
+  }
+  .cards--schedule .card:has(.card__photos) > * { grid-column: 2; }
+  .cards--schedule .card:has(.card__photos) > .card__photos {
+    grid-column: 1;
+    grid-row: 1 / span 20;
+    margin: 0;
+    align-self: start;
+  }
+  .cards--schedule .card:has(.card__photos) > .card__label { margin-top: 0.4rem; }
+  .cards--schedule .card:not(:has(.card__photos)) { padding: 2rem 2.25rem; }
+}
