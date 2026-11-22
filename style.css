@@ -1531,3 +1531,4 @@ input:focus-visible, textarea:focus-visible {
   .cards--schedule .card:has(.card__photos) > .card__label { margin-top: 0.4rem; }
   .cards--schedule .card:not(:has(.card__photos)) { padding: 2rem 2.25rem; }
 }
+.card__note--after { margin-top: 0.8rem; }
