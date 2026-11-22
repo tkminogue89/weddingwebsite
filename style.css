@@ -1567,3 +1567,4 @@ input:focus-visible, textarea:focus-visible {
 .card__list { margin: 0.6rem 0 0.8rem; padding-left: 1.1rem; font-size: 0.95rem; line-height: 1.7; }
 
 .card__info--events dt { letter-spacing: 0.1em; }
+.card__info dd strong { font-weight: 600; }
