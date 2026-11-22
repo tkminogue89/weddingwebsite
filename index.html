@@ -206,8 +206,9 @@
           <div class="card__photos" data-photos>
             <div class="card__photos-track">
               <img src="images/venue-welcome-1.jpg" alt="Aerial view of Desert Flower Retreat at sunset" loading="lazy" width="1200" height="797">
-              <img src="images/venue-welcome-2.jpg" alt="View of the Joshua Tree mountains from Desert Flower Retreat" loading="lazy" width="1200" height="673">
-              <img src="images/venue-welcome-3.jpg" alt="Golden desert and mountains near Desert Flower Retreat" loading="lazy" width="1200" height="671">
+              <img src="images/venue-welcome-2.jpg" alt="Aerial view of Desert Flower Retreat with its pool and pergola" loading="lazy" width="1500" height="999">
+              <img src="images/venue-welcome-3.jpg" alt="Long wooden table under the pergola with mountain views" loading="lazy" width="1500" height="843">
+              <img src="images/venue-welcome-4.jpg" alt="Front of Desert Flower Retreat under a bright blue sky" loading="lazy" width="1340" height="800">
             </div>
           </div>
           <span class="card__label">Welcome Party</span>
@@ -859,16 +860,25 @@
       render();
     });
 
-    /* Venue photo strips on the Schedule cards: swipe, or click a photo for the next one */
+    /* Venue photo strips on the Schedule cards: swipe, or click a photo for the next one.
+       A small "1 / 4 ›" counter shows there are more photos. */
     document.querySelectorAll('[data-photos]').forEach(box => {
       const track = box.querySelector('.card__photos-track');
       const n = track.querySelectorAll('img').length;
       if (n < 2) return;
       box.classList.add('is-multi');
+      const count = document.createElement('span');
+      count.className = 'card__photos-count';
+      count.setAttribute('aria-hidden', 'true');
+      box.appendChild(count);
+      const idx = () => Math.round(track.scrollLeft / track.clientWidth);
+      const paint = () => { count.textContent = (idx() + 1) + ' / ' + n + '  \u203A'; };
+      track.setAttribute('title', 'Tap for more photos');
       track.addEventListener('click', () => {
-        const i = Math.round(track.scrollLeft / track.clientWidth);
-        track.scrollTo({ left: ((i + 1) % n) * track.clientWidth, behavior: 'smooth' });
+        track.scrollTo({ left: ((idx() + 1) % n) * track.clientWidth, behavior: 'smooth' });
       });
+      track.addEventListener('scroll', paint, { passive: true });
+      paint();
     });
 
     /* ======================================================================
