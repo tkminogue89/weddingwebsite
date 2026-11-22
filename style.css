@@ -1584,3 +1584,7 @@ input:focus-visible, textarea:focus-visible {
 .area-map__note { margin: 0.6rem 0 0; font-size: 0.82rem; color: color-mix(in srgb, var(--ink) 65%, transparent); }
 .area-map__pin--hotel circle, .area-map__num--hotel { fill: var(--dusk); background: var(--dusk); }
 .card__info--events dt { letter-spacing: 0.1em; }
+.area-map__minor { fill: none; stroke: var(--ink); stroke-width: 1.6; opacity: 0.35; stroke-linejoin: round; }
+.area-map__dirt { fill: none; stroke: var(--oxblood); stroke-width: 2.2; stroke-dasharray: 3 3; opacity: 0.8; }
+.area-map__road-name { fill: var(--ink); opacity: 0.55; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+.area-map__dirtkey { flex: none; width: 22px; height: 0; border-top: 2.5px dashed var(--oxblood); opacity: 0.8; }
