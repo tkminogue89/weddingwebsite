@@ -206,15 +206,16 @@
           <div class="card__photos" data-photos>
             <div class="card__photos-track">
               <img src="images/venue-welcome-1.jpg" alt="Aerial view of Desert Flower Retreat at sunset" loading="lazy" width="1200" height="797">
-              <img src="images/venue-welcome-2.jpg" alt="View of the Joshua Tree mountains from Desert Flower Retreat" loading="lazy" width="1200" height="673">
-              <img src="images/venue-welcome-3.jpg" alt="Golden desert and mountains near Desert Flower Retreat" loading="lazy" width="1200" height="671">
+              <img src="images/venue-welcome-2.jpg" alt="Aerial view of Desert Flower Retreat with its pool and pergola" loading="lazy" width="1500" height="999">
+              <img src="images/venue-welcome-3.jpg" alt="Long wooden table under the pergola with mountain views" loading="lazy" width="1500" height="843">
+              <img src="images/venue-welcome-4.jpg" alt="Front of Desert Flower Retreat under a bright blue sky" loading="lazy" width="1340" height="800">
             </div>
           </div>
           <span class="card__label">Welcome Party</span>
-          <h3 class="card__heading">6:00 PM</h3>
+          <h3 class="card__heading">4:00 PM</h3>
           <p class="card__venue">Desert Flower Retreat</p>
           <p class="card__addr">Friday, April 30 · Joshua Tree</p>
-          <p class="card__note">Join us the night before to kick off the weekend in the desert.</p>
+          <p class="card__note">Kick off the weekend with us the night before. Drinks and lawn games (horseshoes, cornhole, giant Jenga and more), with tacos at 6 PM!</p>
           <a class="card__map" href="https://www.google.com/maps/search/?api=1&amp;query=Desert+Flower+Retreat%2C+4500+Desert+Flower+Ave%2C+Twentynine+Palms%2C+CA+92277" target="_blank" rel="noopener">📍 Open in Maps</a>
           <details class="card-cal">
             <summary class="card-cal__summary">Add to calendar</summary>
@@ -257,6 +258,7 @@
           <p class="card__venue">Sacred Sands</p>
           <p class="card__addr">Same location · dinner, dancing &amp; cake</p>
           <p class="card__note">Cocktails at sunset, dinner under the stars, and dancing into the desert night — wrapping up at 10 PM.</p>
+          <p class="card__note card__note--after">If you'd like to join us for an after party, we'll be headed to <a class="details__after-link" href="https://maps.app.goo.gl/MEiCAqeCRqbuZtfY6" target="_blank" rel="noopener">Más o Menos</a> &rsquo;til midnight!</p>
           <a class="card__map" href="https://www.google.com/maps/search/?api=1&amp;query=Sacred+Sands+63155+Quail+Springs+Rd+Joshua+Tree+CA" target="_blank" rel="noopener">📍 Open in Maps</a>
           <details class="card-cal">
             <summary class="card-cal__summary">Add to calendar</summary>
@@ -284,7 +286,6 @@
 
       </div>
 
-      <p class="details__after">If you'd like to join us for an after party, we'll be headed to <a class="details__after-link" href="https://maps.app.goo.gl/MEiCAqeCRqbuZtfY6" target="_blank" rel="noopener">Más o Menos</a> &rsquo;til midnight!</p>
     </section>
 
     <!-- ============================ MENU ============================ -->
@@ -859,16 +860,25 @@
       render();
     });
 
-    /* Venue photo strips on the Schedule cards: swipe, or click a photo for the next one */
+    /* Venue photo strips on the Schedule cards: swipe, or click a photo for the next one.
+       A small "1 / 4 ›" counter shows there are more photos. */
     document.querySelectorAll('[data-photos]').forEach(box => {
       const track = box.querySelector('.card__photos-track');
       const n = track.querySelectorAll('img').length;
       if (n < 2) return;
       box.classList.add('is-multi');
+      const count = document.createElement('span');
+      count.className = 'card__photos-count';
+      count.setAttribute('aria-hidden', 'true');
+      box.appendChild(count);
+      const idx = () => Math.round(track.scrollLeft / track.clientWidth);
+      const paint = () => { count.textContent = (idx() + 1) + ' / ' + n + '  \u203A'; };
+      track.setAttribute('title', 'Tap for more photos');
       track.addEventListener('click', () => {
-        const i = Math.round(track.scrollLeft / track.clientWidth);
-        track.scrollTo({ left: ((i + 1) % n) * track.clientWidth, behavior: 'smooth' });
+        track.scrollTo({ left: ((idx() + 1) % n) * track.clientWidth, behavior: 'smooth' });
       });
+      track.addEventListener('scroll', paint, { passive: true });
+      paint();
     });
 
     /* ======================================================================
@@ -880,8 +890,8 @@
       welcome: {
         title: 'Welcome Party — Teri & Nathan',
         location: 'Desert Flower Retreat, 4500 Desert Flower Ave, Twentynine Palms, CA 92277',
-        details: 'Join us the night before for a desert welcome party!',
-        start: '20270501T010000Z',   // 4/30 6:00 PM PDT
+        details: 'Kick off the weekend with us the night before. Drinks and lawn games (horseshoes, cornhole, giant Jenga and more), with tacos at 6 PM!',
+        start: '20270430T230000Z',   // 4/30 4:00 PM PDT
         end:   '20270501T040000Z',   // 4/30 9:00 PM PDT
       },
       ceremony: {
