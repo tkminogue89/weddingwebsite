@@ -1562,3 +1562,24 @@ input:focus-visible, textarea:focus-visible {
 }
 .card__info dd { margin: 0; font-size: 0.95rem; line-height: 1.55; }
 .card__info + .card__map { display: inline-block; margin-top: 1rem; }
+
+/* Drive-time list in the Travel card */
+.card__list { margin: 0.6rem 0 0.8rem; padding-left: 1.1rem; font-size: 0.95rem; line-height: 1.7; }
+
+/* Area map in the Accommodation card (schematic, not to scale) */
+.area-map { margin: 1.25rem 0 0; }
+.area-map svg { display: block; width: 100%; height: auto; border-radius: 12px; background: var(--sand); }
+.area-map__park { fill: color-mix(in srgb, var(--dusk) 16%, transparent); }
+.area-map__park-label { fill: var(--dusk); font-size: 19px; font-style: italic; letter-spacing: 0.03em; }
+.area-map__zone { fill: color-mix(in srgb, var(--clay) 13%, transparent); stroke: var(--clay); stroke-width: 1.5; stroke-dasharray: 5 5; }
+.area-map__road { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; opacity: 0.55; }
+.area-map__road-label { fill: var(--ink); opacity: 0.6; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; }
+.area-map__town { fill: var(--ink); font-size: 22px; font-weight: 600; paint-order: stroke; stroke: var(--sand); stroke-width: 4px; stroke-linejoin: round; }
+.area-map__pin circle { fill: var(--oxblood); stroke: var(--cream); stroke-width: 2.5; }
+.area-map__pin text { fill: var(--cream); font-size: 16px; font-weight: 700; }
+.area-map__legend { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; gap: 0.4rem; font-size: 0.92rem; }
+.area-map__legend li { display: flex; align-items: center; gap: 0.6rem; }
+.area-map__num { flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--oxblood); color: var(--cream); font-size: 0.75rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.area-map__swatch { flex: none; width: 22px; height: 14px; border-radius: 7px; border: 1.5px dashed var(--clay); background: color-mix(in srgb, var(--clay) 13%, transparent); }
+.area-map__note { margin: 0.6rem 0 0; font-size: 0.82rem; color: color-mix(in srgb, var(--ink) 65%, transparent); }
+.area-map__pin--hotel circle, .area-map__num--hotel { fill: var(--dusk); background: var(--dusk); }

@@ -436,24 +436,69 @@
     <section class="section section--travel" id="travel">
       <p class="eyebrow">Getting there</p>
       <h2 class="section__title">Travel &amp; Stay</h2>
-      <div class="cards cards--two">
+      <div class="cards cards--schedule">
         <article class="card">
-          <span class="card__label">Where to stay</span>
+          <span class="card__label">Travel</span>
+          <p class="card__venue">Flying in</p>
+          <p class="card__note">The closest airport is Palm Springs (PSP), about 45 minutes away. Typical drive times:</p>
+          <ul class="card__list">
+            <li>Palm Springs (PSP) — ~45 min</li>
+            <li>Ontario (ONT) — ~1.5–2 hrs</li>
+            <li>Los Angeles (LAX) — ~2.5–3 hrs</li>
+            <li>San Diego (SAN) — ~3 hrs</li>
+          </ul>
+          <p class="card__note">A rental car is the easiest way to get around the desert.</p>
+        </article>
+        <article class="card">
+          <span class="card__label">Accommodation</span>
           <p class="card__venue">Fairfield Inn &amp; Suites by Marriott</p>
           <p class="card__addr">Twentynine Palms · about 15 min from Sacred Sands</p>
-          <p class="card__note">We've reserved a block of rooms at our group rate. Book early — the block is limited and rooms fill up.</p>
+          <p class="card__note">We've reserved a block of rooms at our group rate. Book early, rooms will only be held until March 31st. Our wedding-day shuttle runs from here.</p>
           <a class="btn card__btn" href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1775602002797&amp;key=GRP&amp;app=resvlink" target="_blank" rel="noopener">Book the room block →</a>
-        </article>
-        <article class="card">
-          <span class="card__label">Prefer an Airbnb?</span>
-          <p class="card__venue">Rentals in Joshua Tree</p>
-          <p class="card__addr">Scattered throughout the high desert, near Sacred Sands</p>
-          <p class="card__note">Joshua Tree has beautiful, unique homes if you'd rather have your own space. Many come with fire pits, hot tubs, and are great for stargazing.</p>
+          <dl class="card__info">
+            <div><dt>Prefer an Airbnb?</dt><dd>Joshua Tree has beautiful, unique homes if you'd rather have your own space. Many come with fire pits, hot tubs, and are great for stargazing. Airbnbs are plentiful in the area, including some very close to Sacred Sands. If you stay in one, you&rsquo;ll need to drive yourself to each event, or get to the Fairfield Inn to catch the wedding-day shuttle.</dd></div>
+          </dl>
           <a class="btn card__btn" href="https://www.airbnb.com/s/Joshua-Tree--CA/homes?checkin=2027-04-29&amp;checkout=2027-05-02&amp;adults=2&amp;search_by_map=true&amp;ne_lat=34.1434&amp;ne_lng=-116.2622&amp;sw_lat=34.0734&amp;sw_lng=-116.3272&amp;zoom=12" target="_blank" rel="noopener">Browse Airbnbs near the venue →</a>
+          <figure class="area-map">
+            <!-- Schematic area map (not to scale). Positions are approximate. -->
+            <svg viewBox="150 0 560 300" role="img" aria-labelledby="area-map-title">
+              <title id="area-map-title">Map of the wedding locations along Highway 62, with Joshua Tree and Twentynine Palms marked as areas to look for an Airbnb</title>
+              <path class="area-map__park" d="M180 300 L180 236 C230 214 300 216 360 206 C450 192 560 186 740 172 L740 300 Z"/>
+              <text class="area-map__park-label" x="470" y="268">Joshua Tree National Park</text>
+              <ellipse class="area-map__zone" cx="262" cy="152" rx="70" ry="64"/>
+              <ellipse class="area-map__zone" cx="604" cy="106" rx="80" ry="44"/>
+              <path class="area-map__road" d="M150 136 C190 124 225 116 254 114 C300 112 350 122 394 124 C470 126 540 114 606 112 C650 111 700 112 740 112"/>
+              <text class="area-map__road-label" x="440" y="146">HWY 62</text>
+              <text class="area-map__town" x="262" y="78" text-anchor="middle">Joshua Tree</text>
+              <text class="area-map__town" x="600" y="172" text-anchor="middle">Twentynine Palms</text>
+              <g class="area-map__pin area-map__pin--hotel"><circle cx="574" cy="94" r="14"/><text x="574" y="100" text-anchor="middle">H</text></g>
+              <g class="area-map__pin"><circle cx="538" cy="58" r="14"/><text x="538" y="64" text-anchor="middle">1</text></g>
+              <g class="area-map__pin"><circle cx="296" cy="184" r="14"/><text x="296" y="190" text-anchor="middle">2</text></g>
+              <g class="area-map__pin"><circle cx="394" cy="124" r="14"/><text x="394" y="130" text-anchor="middle">3</text></g>
+              <g class="area-map__pin"><circle cx="630" cy="124" r="14"/><text x="630" y="130" text-anchor="middle">4</text></g>
+            </svg>
+            <figcaption>
+              <ol class="area-map__legend">
+                <li><span class="area-map__num">1</span>Desert Flower Retreat · welcome party</li>
+                <li><span class="area-map__num">2</span>Sacred Sands · ceremony &amp; reception</li>
+                <li><span class="area-map__num">3</span>Más o Menos · after party</li>
+                <li><span class="area-map__num">4</span>29 Palms Beer Co. · morning-after coffee</li>
+                <li><span class="area-map__num area-map__num--hotel">H</span>Fairfield Inn · room block &amp; shuttle</li>
+                <li><span class="area-map__swatch"></span>Good areas to look for an Airbnb</li>
+              </ol>
+              <p class="area-map__note">Not to scale; locations are approximate.</p>
+            </figcaption>
+          </figure>
         </article>
         <article class="card">
-          <span class="card__label">Getting around</span>
-          <p class="card__note">Fly into Palm Springs (PSP), about an hour away, or Ontario (ONT). A car is the easiest way to get around the desert, and parking is available on-site at Sacred Sands.</p>
+          <span class="card__label">Transportation</span>
+          <p class="card__venue">Driving &amp; the wedding-day shuttle</p>
+          <p class="card__note">Drive yourself (there&rsquo;s plenty of parking at Sacred Sands) or take our shuttle from the Fairfield Inn. Ubers do come out this way, but they aren&rsquo;t reliable.</p>
+          <dl class="card__info">
+            <div><dt>To the ceremony</dt><dd>Shuttles leave the Fairfield Inn for Sacred Sands at 2:30 PM and 3:30 PM on Saturday, May 1.</dd></div>
+            <div><dt>Back to the hotel</dt><dd>From 9 PM, shuttles loop between Sacred Sands, the after party and the Fairfield Inn. The last one leaves the after party for the Fairfield Inn at midnight!</dd></div>
+            <div><dt>Welcome Party</dt><dd>No shuttle. Parking is limited at Desert Flower Retreat, so please carpool as much as you can!</dd></div>
+          </dl>
         </article>
       </div>
 
