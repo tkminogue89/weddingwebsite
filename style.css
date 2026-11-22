@@ -1476,3 +1476,72 @@ input:focus-visible, textarea:focus-visible {
 
 .menu__footnote-link { color: var(--clay); text-decoration: underline; text-underline-offset: 2px; }
 .menu__footnote-link:hover, .menu__footnote-link:focus-visible { color: var(--oxblood); }
+
+/* ---------- Venue photo strips on the Schedule cards ---------- */
+.card__photos {
+  position: relative;
+  margin: -0.6rem -0.4rem 1.3rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--sand, #efe6d2);
+}
+.card__photos-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  aspect-ratio: 4 / 3;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.card__photos-track::-webkit-scrollbar { display: none; }
+.card__photos-track img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  scroll-snap-align: start;
+}
+.card__photos-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(251, 246, 233, 0.85);
+  color: var(--ink);
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0 0 3px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.card__photos-btn--prev { left: 8px; }
+.card__photos-btn--next { right: 8px; }
+.card__photos:hover .card__photos-btn,
+.card__photos-btn:focus-visible { opacity: 1; }
+@media (hover: none) { .card__photos-btn { display: none; } }
+.card__photos-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  pointer-events: none;
+}
+.card__photos-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(251, 246, 233, 0.55);
+  transition: background 0.2s;
+}
+.card__photos-dots span.is-on { background: #fbf6e9; }
+.card__photos.is-single .card__photos-btn,
+.card__photos.is-single .card__photos-dots { display: none; }

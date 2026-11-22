@@ -202,6 +202,17 @@
       <div class="cards">
 
         <article class="card">
+          <!-- Venue photos: swipe on phones, arrows on desktop. Add/remove <img> lines freely. -->
+          <div class="card__photos" data-photos>
+            <div class="card__photos-track">
+              <img src="images/venue-welcome-1.jpg" alt="Aerial view of Desert Flower Retreat at sunset" loading="lazy" width="1200" height="797">
+              <img src="images/venue-welcome-2.jpg" alt="View of the Joshua Tree mountains from Desert Flower Retreat" loading="lazy" width="1200" height="673">
+              <img src="images/venue-welcome-3.jpg" alt="Golden desert and mountains near Desert Flower Retreat" loading="lazy" width="1200" height="671">
+            </div>
+            <button class="card__photos-btn card__photos-btn--prev" type="button" aria-label="Previous photo">&#8249;</button>
+            <button class="card__photos-btn card__photos-btn--next" type="button" aria-label="Next photo">&#8250;</button>
+            <div class="card__photos-dots" aria-hidden="true"></div>
+          </div>
           <span class="card__label">Welcome Party</span>
           <h3 class="card__heading">6:00 PM</h3>
           <p class="card__venue">Desert Flower Retreat</p>
@@ -829,6 +840,22 @@
       }, { passive: true });
 
       render();
+    });
+
+    /* Venue photo strips on the Schedule cards: arrows + dots */
+    document.querySelectorAll('[data-photos]').forEach(box => {
+      const track = box.querySelector('.card__photos-track');
+      const imgs = track.querySelectorAll('img');
+      const dots = box.querySelector('.card__photos-dots');
+      if (imgs.length < 2) { box.classList.add('is-single'); return; }
+      imgs.forEach(() => dots.appendChild(document.createElement('span')));
+      const idx = () => Math.round(track.scrollLeft / track.clientWidth);
+      const paint = () => [...dots.children].forEach((d, i) => d.classList.toggle('is-on', i === idx()));
+      const go = n => track.scrollTo({ left: ((idx() + n + imgs.length) % imgs.length) * track.clientWidth, behavior: 'smooth' });
+      box.querySelector('.card__photos-btn--prev').addEventListener('click', () => go(-1));
+      box.querySelector('.card__photos-btn--next').addEventListener('click', () => go(1));
+      track.addEventListener('scroll', paint, { passive: true });
+      paint();
     });
 
     /* ======================================================================
