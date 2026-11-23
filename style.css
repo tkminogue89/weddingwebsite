@@ -703,18 +703,6 @@ html.unlocked .gate { display: none; }
 .card__note { margin: 0; font-size: 0.97rem; }
 .card__btn { margin-top: 1.2rem; }
 
-/* Travel & Stay: center card text and balance the odd (3rd) card */
-.section--travel .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.section--travel .card {
-  flex: 1 1 320px;
-  max-width: 360px;
-  text-align: center;
-}
-
 /* "Open in Maps" link on each itinerary card */
 .card__map {
   display: inline-block;
