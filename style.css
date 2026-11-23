@@ -691,6 +691,19 @@ html.unlocked .gate { display: none; }
   color: var(--olive);
   margin-bottom: 0.6rem;
 }
+.card__optional {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.56rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+  border: 1px solid color-mix(in srgb, var(--olive) 40%, transparent);
+  border-radius: 999px;
+  padding: 0.15em 0.6em;
+  margin-left: 0.5em;
+  vertical-align: middle;
+}
 .card__heading {
   font-family: var(--display);
   font-weight: normal;
