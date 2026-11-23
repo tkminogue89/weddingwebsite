@@ -685,8 +685,8 @@ html.unlocked .gate { display: none; }
 .card__label {
   display: inline-block;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--olive);
   margin-bottom: 0.6rem;
