@@ -487,27 +487,19 @@
           <div class="card-cal__opts" data-cal="rsvp"></div>
         </details>
 
-        <!-- RSVPify official embed. The script injects the form here.
-             To change which event loads, edit the script src below. -->
+        <!-- RSVPify embed — direct iframe. Loads the form straight from RSVPify
+             instead of relying on an injected cross-origin script, so it keeps
+             working behind ad/tracking blockers and when testing locally.
+             To change which event loads, edit the iframe src below. -->
         <div class="rsvp-embed">
           <p class="rsvp-embed__loading" role="status">Loading the RSVP form&hellip;</p>
-          <script type="text/javascript" src="https://nateteriwedding.rsvpify.com/embed"></script>
+          <iframe
+            class="rsvp-embed__frame"
+            src="https://nateteriwedding.rsvpify.com/?embed=1"
+            title="RSVP form"
+            loading="lazy"
+            onload="var p=this.parentNode.querySelector('.rsvp-embed__loading'); if (p) p.remove();"></iframe>
         </div>
-        <script>
-          /* Hide the "Loading…" note once RSVPify injects its form iframe. */
-          (function () {
-            var box = document.querySelector('.rsvp-embed');
-            if (!box) return;
-            var ph = box.querySelector('.rsvp-embed__loading');
-            if (!ph) return;
-            var clear = function () { if (ph) { ph.remove(); ph = null; } };
-            if (box.querySelector('iframe')) return clear();
-            var obs = new MutationObserver(function () {
-              if (box.querySelector('iframe')) { clear(); obs.disconnect(); }
-            });
-            obs.observe(box, { childList: true, subtree: true });
-          })();
-        </script>
       </div>
     </section>
 
